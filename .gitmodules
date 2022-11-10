@@ -1,0 +1,4 @@
+[submodule "submodules/api"]
+	path = submodules/api
+	url = ssh://git@git.rabex.co:2222/backend/api.git
+	branch = develop

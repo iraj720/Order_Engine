@@ -1,0 +1,1028 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Fiat",
+    "version": "1.0",
+    "contact": {
+      "name": "gRPC-Gateway project",
+      "url": "https://github.com/grpc-ecosystem/grpc-gateway",
+      "email": "none@example.com"
+    },
+    "license": {
+      "name": "BSD 3-Clause License",
+      "url": "https://github.com/grpc-ecosystem/grpc-gateway/blob/master/LICENSE.txt"
+    },
+    "x-something-something": "yadda"
+  },
+  "tags": [
+    {
+      "name": "Fiat"
+    }
+  ],
+  "host": "192.168.100.6",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/fiat/deposit/callback": {
+      "post": {
+        "operationId": "Fiat_DepositCallback",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apifiatDepositCallbackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apifiatDepositCallbackRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/deposit/data": {
+      "post": {
+        "operationId": "Fiat_GetDepositData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatDepositDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fiatTargetOrder"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/deposit/data/{invoiceNumber}": {
+      "get": {
+        "operationId": "Fiat_GetDepositDataByInvoiceNum",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatGetDepositDataByInvoiceNumResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "invoiceNumber",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/deposit/new": {
+      "post": {
+        "summary": "///////////////////////////////////\nDeposit\n///////////////////////////////////",
+        "operationId": "Fiat_SubmitNewDeposit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apifiatDepositResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apifiatDepositRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/paymentservice/default/set": {
+      "post": {
+        "summary": "///////////////////////////////////\nGeneral\n///////////////////////////////////",
+        "operationId": "Fiat_SetDefaultPaymentService",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatDefaultPaymentServiceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fiatDefaultPaymentServiceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/withdraw/callback": {
+      "post": {
+        "operationId": "Fiat_WithdrawCallback",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatWithdrawCallbackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fiatWithdrawCallbackRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/withdraw/cancel": {
+      "post": {
+        "operationId": "Fiat_CancelWithdraw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatCancelWithdrawResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fiatTargetOrder"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/withdraw/data": {
+      "post": {
+        "operationId": "Fiat_GetWithdrawData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatWithdrawDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fiatTargetOrder"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/withdraw/data/{invoiceNumber}": {
+      "get": {
+        "operationId": "Fiat_GetWithdrawDataByInvoiceNum",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatGetWithdrawDataByInvoiceNumResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "invoiceNumber",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/withdraw/new": {
+      "post": {
+        "summary": "///////////////////////////////////\nWithdraw\n///////////////////////////////////",
+        "operationId": "Fiat_SubmitNewWithdraw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apifiatWithdrawResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apifiatWithdrawRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    },
+    "/api/v1/fiat/withdraw/resend": {
+      "post": {
+        "operationId": "Fiat_ResendWithdrawToPaymentService",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/fiatResendWithdrawToPaymentServiceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fiatResendWithdrawToPaymentServiceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Fiat"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apicommonsAssets": {
+      "type": "string",
+      "enum": [
+        "UnspecifiedAsset",
+        "BTC",
+        "ETH",
+        "XRP",
+        "BCH",
+        "LTC",
+        "LINK",
+        "EOS",
+        "TRX",
+        "XLM",
+        "XMR",
+        "IOTA",
+        "ZEC",
+        "USDC",
+        "DASH",
+        "DOGE",
+        "PAX",
+        "SC",
+        "BAT",
+        "BCHSV",
+        "BTT",
+        "ETC",
+        "NEO",
+        "ATOM",
+        "ONG",
+        "VET",
+        "DCR",
+        "QTUM",
+        "IOST",
+        "XTZ",
+        "WAVES",
+        "ALGO",
+        "TUSD",
+        "HOT",
+        "KAVA",
+        "ZRX",
+        "ICX",
+        "NANO",
+        "ONE",
+        "NPXS",
+        "FTM",
+        "DENT",
+        "THETA",
+        "MITH",
+        "WAN",
+        "DOCK",
+        "USDS",
+        "ENJ",
+        "COCOS",
+        "RVN",
+        "TOMO",
+        "ZIL",
+        "BEAM",
+        "HC",
+        "NULS",
+        "STORM",
+        "MTL",
+        "CVC",
+        "GTO",
+        "FUN",
+        "PERL",
+        "DUSK",
+        "DGB",
+        "EGLD",
+        "AAVE",
+        "VTHO",
+        "JST",
+        "PAXG",
+        "DOT",
+        "UNI",
+        "BAND",
+        "FIL",
+        "SUN",
+        "OCEAN",
+        "SOL",
+        "CHZ",
+        "SUSHI",
+        "TFUEL",
+        "BNB",
+        "USDT",
+        "ONEINCH",
+        "CAKE",
+        "BUSD",
+        "WIN",
+        "ONT",
+        "SHIB",
+        "MATIC",
+        "YFI",
+        "YFII",
+        "AVAX",
+        "ADA",
+        "IRR"
+      ],
+      "default": "UnspecifiedAsset"
+    },
+    "apicommonsdepositDepositStatus": {
+      "type": "string",
+      "enum": [
+        "New",
+        "FailedPaymentServiceDown",
+        "Redirecting",
+        "Pending",
+        "Failed",
+        "Successful",
+        "FailedUnVerifiedPayment",
+        "VerifiedPayment",
+        "AutoApprovalCheck",
+        "AutoApproved",
+        "Completed",
+        "WaitingForAdmin",
+        "AdminApproved",
+        "Frozen",
+        "ToBeConfiscated",
+        "Confiscated",
+        "Unfreeze",
+        "SystemApproved"
+      ],
+      "default": "New",
+      "title": "///////////////////////////////////\nDeposit\n///////////////////////////////////"
+    },
+    "apicommonswithdrawWithdrawStatus": {
+      "type": "string",
+      "enum": [
+        "New",
+        "AutoApprovalCheck",
+        "AutoApproved",
+        "WaitingForAdmin",
+        "AdminApproved",
+        "Completed",
+        "SendingToPaymentService",
+        "SentToPaymentService",
+        "Successful",
+        "ToBeSettled",
+        "SettlementCancelled",
+        "Failed",
+        "Frozen",
+        "ToBeCancelled",
+        "Cancelled",
+        "FailedtoConnectPS"
+      ],
+      "default": "New",
+      "title": "///////////////////////////////////\nWithdraw\n///////////////////////////////////"
+    },
+    "apifiatDepositCallbackRequest": {
+      "type": "object",
+      "properties": {
+        "paymentStatus": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "apifiatDepositCallbackResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/apifiatDepositCallbackResponseData"
+        }
+      }
+    },
+    "apifiatDepositCallbackResponseData": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "depositDeliveryStatus": {
+          "$ref": "#/definitions/fiatDepositDeliveryStatus"
+        },
+        "uniqueTxId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        }
+      }
+    },
+    "apifiatDepositData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonsdepositDepositStatus"
+        },
+        "paymentServiceDepositData": {
+          "$ref": "#/definitions/fiatPaymentServiceDepositData"
+        },
+        "targetOrder": {
+          "$ref": "#/definitions/fiatTargetOrder"
+        },
+        "pass": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        }
+      },
+      "title": "///////////////////////////////////\nFiat\n///////////////////////////////////"
+    },
+    "apifiatDepositRequest": {
+      "type": "object",
+      "properties": {
+        "pass": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        }
+      },
+      "title": "///////////////////////////////////\nDeposit\n///////////////////////////////////"
+    },
+    "apifiatDepositResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonsdepositDepositStatus"
+        },
+        "targetOrder": {
+          "$ref": "#/definitions/fiatTargetOrder"
+        },
+        "message": {
+          "type": "string"
+        },
+        "payUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "apifiatPaymentService": {
+      "type": "string",
+      "enum": [
+        "VANDAR",
+        "AYANDEH"
+      ],
+      "default": "VANDAR"
+    },
+    "apifiatWithdrawData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "paymentServiceWithdrawData": {
+          "$ref": "#/definitions/fiatPaymentServiceWithdrawData"
+        },
+        "targetOrder": {
+          "$ref": "#/definitions/fiatTargetOrder"
+        },
+        "pass": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "lastUpdateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "apifiatWithdrawRequest": {
+      "type": "object",
+      "properties": {
+        "pass": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "isInstant": {
+          "type": "boolean"
+        }
+      }
+    },
+    "apifiatWithdrawResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "targetOrder": {
+          "$ref": "#/definitions/fiatTargetOrder"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatAyandehParameters": {
+      "type": "object",
+      "properties": {
+        "fakeParameter": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatCancelWithdrawResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatDefaultPaymentServiceRequest": {
+      "type": "object",
+      "properties": {
+        "paymentService": {
+          "$ref": "#/definitions/apifiatPaymentService"
+        },
+        "paymentServiceParameters": {
+          "$ref": "#/definitions/fiatPaymentServiceParameters"
+        }
+      }
+    },
+    "fiatDefaultPaymentServiceResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatDepositDataResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonsdepositDepositStatus"
+        },
+        "paymentServiceDepositData": {
+          "$ref": "#/definitions/fiatPaymentServiceDepositData"
+        },
+        "targetOrder": {
+          "$ref": "#/definitions/fiatTargetOrder"
+        },
+        "pass": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatDepositDeliveryStatus": {
+      "type": "string",
+      "enum": [
+        "Unspecified",
+        "SuccessFinished",
+        "SuccessWait",
+        "Failed"
+      ],
+      "default": "Unspecified"
+    },
+    "fiatGetDepositDataByInvoiceNumResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apifiatDepositData"
+          }
+        }
+      }
+    },
+    "fiatGetWithdrawDataByInvoiceNumResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apifiatWithdrawData"
+          }
+        }
+      }
+    },
+    "fiatPaymentServiceDataDetail": {
+      "type": "object",
+      "properties": {
+        "UUID": {
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "wage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "settlementTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "settlementPredictionTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RRN": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatPaymentServiceDepositData": {
+      "type": "object",
+      "properties": {
+        "wage": {
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "paymentService": {
+          "$ref": "#/definitions/apifiatPaymentService"
+        },
+        "paymentServiceParameters": {
+          "$ref": "#/definitions/fiatPaymentServiceParameters"
+        },
+        "paymentDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "fiatPaymentServiceParameters": {
+      "type": "object",
+      "properties": {
+        "vandarParameters": {
+          "$ref": "#/definitions/fiatVandarParameters"
+        },
+        "ayandehParameters": {
+          "$ref": "#/definitions/fiatAyandehParameters"
+        }
+      }
+    },
+    "fiatPaymentServiceWithdrawData": {
+      "type": "object",
+      "properties": {
+        "paymentService": {
+          "$ref": "#/definitions/apifiatPaymentService"
+        },
+        "paymentServiceParameters": {
+          "$ref": "#/definitions/fiatPaymentServiceParameters"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/fiatPaymentServiceDataDetail"
+          }
+        }
+      }
+    },
+    "fiatResendWithdrawToPaymentServiceRequest": {
+      "type": "object",
+      "properties": {
+        "targetOrders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/fiatTargetOrder"
+          }
+        }
+      }
+    },
+    "fiatResendWithdrawToPaymentServiceResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatTargetOrder": {
+      "type": "object",
+      "properties": {
+        "UUID": {
+          "type": "string"
+        },
+        "pass": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatVandarBusinesses": {
+      "type": "string",
+      "enum": [
+        "RABIN",
+        "RABEXPRO"
+      ],
+      "default": "RABIN"
+    },
+    "fiatVandarParameters": {
+      "type": "object",
+      "properties": {
+        "vandarBusinesses": {
+          "$ref": "#/definitions/fiatVandarBusinesses"
+        }
+      }
+    },
+    "fiatWithdrawCallbackRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "ibanId": {
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "paymentNumber": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "settlementDate": {
+          "type": "string"
+        },
+        "settlementDateJalali": {
+          "type": "string"
+        },
+        "revisedTransactionId": {
+          "type": "string"
+        },
+        "refCode": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatWithdrawCallbackResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "uniqueTxId": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "fiatWithdrawDataResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "paymentServiceWithdrawData": {
+          "$ref": "#/definitions/fiatPaymentServiceWithdrawData"
+        },
+        "targetOrder": {
+          "$ref": "#/definitions/fiatTargetOrder"
+        },
+        "pass": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "lastUpdateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    }
+  }
+}

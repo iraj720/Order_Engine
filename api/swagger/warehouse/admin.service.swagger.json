@@ -1,0 +1,1415 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "warehouse/admin.service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "AdminOperations"
+    }
+  ],
+  "host": "192.168.100.6",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/accounting/broker/treasury/account": {
+      "put": {
+        "operationId": "AdminOperations_CreateBrokerTreasuryAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseBrokerTreasuryAccountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/broker/warehouse/account": {
+      "put": {
+        "operationId": "AdminOperations_CreateBrokerWarehouseAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseBrokerWarehouseAccountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/brokers/accounts": {
+      "post": {
+        "operationId": "AdminOperations_GetBrokerAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseBrokerAccountsList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseBrokersFilter"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/ops/warehouse/asset": {
+      "put": {
+        "operationId": "AdminOperations_AddAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseNewAsset"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/ops/warehouse/assetnetwork": {
+      "put": {
+        "operationId": "AdminOperations_AddAssetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseNewAssetNetwork"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/ops/warehouse/network": {
+      "put": {
+        "operationId": "AdminOperations_AddNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseNewNetwork"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/treasury/balance/admin": {
+      "post": {
+        "summary": "admin can see all warehouse balance\nif they have multiple assets, they would see many records",
+        "operationId": "AdminOperations_GetTreasuryBalances",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseTreasuryAccounts"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "broker",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Rabex",
+              "AmirMasoud",
+              "Mohsen"
+            ],
+            "default": "Rabex"
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/balance/admin": {
+      "put": {
+        "summary": "Create proxy account",
+        "operationId": "AdminOperations_CreateProxyAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseBalancesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseBalancesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/balance/search": {
+      "post": {
+        "summary": "Search account",
+        "operationId": "AdminOperations_SearchAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseBalancesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseBalancesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/deposit/action": {
+      "post": {
+        "operationId": "AdminOperations_TakeActionOnDeposit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseTakeActionDepositResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseTakeActionDepositRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/deposit/manual": {
+      "put": {
+        "operationId": "AdminOperations_ManualFiatDeposit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseWarehouseReceipt"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseManualFiatDeposit"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/deposit/search": {
+      "post": {
+        "operationId": "AdminOperations_SearchFiatDeposits",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseSearchFiatDepositsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseSearchFiatDepositsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/deposit/search/details": {
+      "post": {
+        "operationId": "AdminOperations_DepositDetails",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseTransactionDetailsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/accounting/warehouse/withdraw/manual": {
+      "post": {
+        "operationId": "AdminOperations_ManualFiatWithdraw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseWarehouseReceipt"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseManualFiatWithrawalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/admin/accounting/warehouse/withdraw/search": {
+      "post": {
+        "summary": "Withdraw",
+        "operationId": "AdminOperations_SearchWithdraw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseSearchFiatWithdrawalsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/warehouseSearchFiatWithdrawalsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    },
+    "/api/v1/admin/accounting/warehouse/withdraw/search/details": {
+      "post": {
+        "operationId": "AdminOperations_WithdrawDetails",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/warehouseWithdrawalDetailsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AdminOperations"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apicommonsAssets": {
+      "type": "string",
+      "enum": [
+        "UnspecifiedAsset",
+        "BTC",
+        "ETH",
+        "XRP",
+        "BCH",
+        "LTC",
+        "LINK",
+        "EOS",
+        "TRX",
+        "XLM",
+        "XMR",
+        "IOTA",
+        "ZEC",
+        "USDC",
+        "DASH",
+        "DOGE",
+        "PAX",
+        "SC",
+        "BAT",
+        "BCHSV",
+        "BTT",
+        "ETC",
+        "NEO",
+        "ATOM",
+        "ONG",
+        "VET",
+        "DCR",
+        "QTUM",
+        "IOST",
+        "XTZ",
+        "WAVES",
+        "ALGO",
+        "TUSD",
+        "HOT",
+        "KAVA",
+        "ZRX",
+        "ICX",
+        "NANO",
+        "ONE",
+        "NPXS",
+        "FTM",
+        "DENT",
+        "THETA",
+        "MITH",
+        "WAN",
+        "DOCK",
+        "USDS",
+        "ENJ",
+        "COCOS",
+        "RVN",
+        "TOMO",
+        "ZIL",
+        "BEAM",
+        "HC",
+        "NULS",
+        "STORM",
+        "MTL",
+        "CVC",
+        "GTO",
+        "FUN",
+        "PERL",
+        "DUSK",
+        "DGB",
+        "EGLD",
+        "AAVE",
+        "VTHO",
+        "JST",
+        "PAXG",
+        "DOT",
+        "UNI",
+        "BAND",
+        "FIL",
+        "SUN",
+        "OCEAN",
+        "SOL",
+        "CHZ",
+        "SUSHI",
+        "TFUEL",
+        "BNB",
+        "USDT",
+        "ONEINCH",
+        "CAKE",
+        "BUSD",
+        "WIN",
+        "ONT",
+        "SHIB",
+        "MATIC",
+        "YFI",
+        "YFII",
+        "AVAX",
+        "ADA",
+        "IRR"
+      ],
+      "default": "UnspecifiedAsset"
+    },
+    "apicommonsNetworks": {
+      "type": "string",
+      "enum": [
+        "UnspecifiedNetwork",
+        "Shetab",
+        "Visa",
+        "BTCMain",
+        "ETHMain",
+        "Tron",
+        "BNBMain"
+      ],
+      "default": "UnspecifiedNetwork"
+    },
+    "apicommonsdepositDepositStatus": {
+      "type": "string",
+      "enum": [
+        "New",
+        "FailedPaymentServiceDown",
+        "Redirecting",
+        "Pending",
+        "Failed",
+        "Successful",
+        "FailedUnVerifiedPayment",
+        "VerifiedPayment",
+        "AutoApprovalCheck",
+        "AutoApproved",
+        "Completed",
+        "WaitingForAdmin",
+        "AdminApproved",
+        "Frozen",
+        "ToBeConfiscated",
+        "Confiscated",
+        "Unfreeze",
+        "SystemApproved"
+      ],
+      "default": "New",
+      "title": "///////////////////////////////////\nDeposit\n///////////////////////////////////"
+    },
+    "apicommonswithdrawWithdrawStatus": {
+      "type": "string",
+      "enum": [
+        "New",
+        "AutoApprovalCheck",
+        "AutoApproved",
+        "WaitingForAdmin",
+        "AdminApproved",
+        "Completed",
+        "SendingToPaymentService",
+        "SentToPaymentService",
+        "Successful",
+        "ToBeSettled",
+        "SettlementCancelled",
+        "Failed",
+        "Frozen",
+        "ToBeCancelled",
+        "Cancelled",
+        "FailedtoConnectPS"
+      ],
+      "default": "New",
+      "title": "///////////////////////////////////\nWithdraw\n///////////////////////////////////"
+    },
+    "apiwarehouseAccountType": {
+      "type": "string",
+      "enum": [
+        "UserAccount",
+        "BrokerAccount",
+        "SuperAccount"
+      ],
+      "default": "UserAccount"
+    },
+    "apiwarehouseDepositData": {
+      "type": "object",
+      "properties": {
+        "timeStamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "requestUUID": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/apicommonsdepositDepositStatus"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "cardNo": {
+          "type": "string"
+        }
+      }
+    },
+    "commonsBrokers": {
+      "type": "string",
+      "enum": [
+        "Rabex",
+        "AmirMasoud",
+        "Mohsen"
+      ],
+      "default": "Rabex"
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "transactionRequest": {
+      "type": "object",
+      "properties": {
+        "UUID": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseAssetStatus": {
+      "type": "string",
+      "enum": [
+        "Available",
+        "InTransition",
+        "Freezed",
+        "Blocked"
+      ],
+      "default": "Available"
+    },
+    "warehouseAssetType": {
+      "type": "string",
+      "enum": [
+        "StableCoin",
+        "FiatMoney",
+        "Crypto"
+      ],
+      "default": "StableCoin"
+    },
+    "warehouseBalance": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "gross": {
+          "type": "string"
+        },
+        "net": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "broker": {
+          "$ref": "#/definitions/commonsBrokers"
+        }
+      }
+    },
+    "warehouseBalancesRequest": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "broker": {
+          "$ref": "#/definitions/commonsBrokers"
+        }
+      }
+    },
+    "warehouseBalancesResponse": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseBalance"
+          }
+        }
+      }
+    },
+    "warehouseBrokerAccountDetails": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "broker": {
+          "$ref": "#/definitions/commonsBrokers"
+        },
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "subAccounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseBrokerSubAccount"
+          }
+        }
+      }
+    },
+    "warehouseBrokerAccountsList": {
+      "type": "object",
+      "properties": {
+        "brokerAccountDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseBrokerAccountDetails"
+          }
+        }
+      }
+    },
+    "warehouseBrokerSubAccount": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "netBalance": {
+          "type": "string"
+        },
+        "grossBalance": {
+          "type": "string"
+        },
+        "issuer": {
+          "$ref": "#/definitions/warehouseBrokerWalletIssuer"
+        },
+        "treasuryAccounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseTreasuryAccount"
+          }
+        }
+      }
+    },
+    "warehouseBrokerTreasuryAccountRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "broker": {
+          "$ref": "#/definitions/commonsBrokers"
+        },
+        "address": {
+          "type": "string"
+        },
+        "brokerAccount": {
+          "type": "string"
+        },
+        "issuer": {
+          "$ref": "#/definitions/warehouseBrokerWalletIssuer"
+        }
+      }
+    },
+    "warehouseBrokerWalletIssuer": {
+      "type": "string",
+      "enum": [
+        "Unspecified",
+        "Mellat",
+        "Melli",
+        "Saman",
+        "Saderat",
+        "Pasargad",
+        "Binance",
+        "TrustWallet",
+        "Coinbase",
+        "Trezor"
+      ],
+      "default": "Unspecified"
+    },
+    "warehouseBrokerWarehouseAccountRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "broker": {
+          "$ref": "#/definitions/commonsBrokers"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseBrokersFilter": {
+      "type": "object",
+      "properties": {
+        "broker": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/commonsBrokers"
+          }
+        }
+      }
+    },
+    "warehouseDepositScenarios": {
+      "type": "string",
+      "enum": [
+        "AutoApprove",
+        "AdminApprove",
+        "Confiscate",
+        "Freeze",
+        "Unfreeze",
+        "ManualDeposit",
+        "RejectPayment"
+      ],
+      "default": "AutoApprove"
+    },
+    "warehouseManualFiatDeposit": {
+      "type": "object",
+      "properties": {
+        "treasuryAccount": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "warehouseAccount": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseManualFiatWithrawalRequest": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "referenceRequest": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseNewAsset": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/warehouseAssetType"
+        },
+        "decimals": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "minWithdrawal": {
+          "type": "string"
+        },
+        "maxWithdrawal": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseNewAssetNetwork": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "decimals": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "withdrawFee": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseNewNetwork": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "addressRegex": {
+          "type": "string"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseSearchFiatDepositsRequest": {
+      "type": "object",
+      "properties": {
+        "requestUUID": {
+          "type": "string"
+        },
+        "cardNo": {
+          "type": "string"
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apicommonsdepositDepositStatus"
+          }
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "warehouseSearchFiatDepositsResponse": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiwarehouseDepositData"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "warehouseSearchFiatWithdrawalsRequest": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+          }
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "warehouseSearchFiatWithdrawalsResponse": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseWithdrawalData"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "warehouseTakeActionDepositRequest": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "$ref": "#/definitions/warehouseDepositScenarios"
+        },
+        "description": {
+          "type": "string"
+        },
+        "requestUUID": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "warehouseTakeActionDepositResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseTotalAccount": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "total": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseTotalAccounts": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseTotalAccount"
+          }
+        }
+      }
+    },
+    "warehouseTransactionDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/apicommonsdepositDepositStatus"
+        },
+        "createdTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "deviceInfo": {
+          "type": "string"
+        },
+        "warehouseJournal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseWarehouseJournal"
+          }
+        }
+      }
+    },
+    "warehouseTreasuryAccount": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "broker": {
+          "$ref": "#/definitions/commonsBrokers"
+        }
+      }
+    },
+    "warehouseTreasuryAccounts": {
+      "type": "object",
+      "properties": {
+        "treasuryAccounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehouseTreasuryAccount"
+          }
+        }
+      }
+    },
+    "warehouseWarehouseJournal": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "string"
+        },
+        "accountType": {
+          "$ref": "#/definitions/apiwarehouseAccountType"
+        },
+        "status": {
+          "$ref": "#/definitions/warehouseAssetStatus"
+        }
+      }
+    },
+    "warehouseWarehouseReceipt": {
+      "type": "object",
+      "properties": {
+        "receipt": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseWithdrawalData": {
+      "type": "object",
+      "properties": {
+        "timeStamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "requestUUID": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/definitions/apicommonsAssets"
+        },
+        "network": {
+          "$ref": "#/definitions/apicommonsNetworks"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "warehouseWithdrawalDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/apicommonswithdrawWithdrawStatus"
+        },
+        "createdTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "deviceInfo": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

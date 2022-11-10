@@ -1,0 +1,71 @@
+stages:
+  - build
+  - dep
+  - build-pro
+  - deploy-pro
+
+build:
+  image: git.rabex.co:5055/infra/base_images/docker:20.10.7-dind
+  stage: build
+  services:
+    - git.rabex.co:5055/infra/base_images/docker:20.10.7-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t git.rabex.co:5055/backend/orderengine:latest .
+    - docker push git.rabex.co:5055/backend/orderengine:latest
+  tags:
+    - build
+    - docker
+    - go
+
+
+dep:
+  stage: dep
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker-compose pull
+    - docker-compose up -d
+  tags:
+    - dev
+    - ssh
+  only:
+    - develop
+
+build-pro:
+  image: git.rabex.co:5055/infra/base_images/docker:20.10.7-dind
+  stage: build-pro
+  services:
+    - git.rabex.co:5055/infra/base_images/docker:20.10.7-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u $PRODUCTION_REGISTRY_USER -p $PRODUCTION_REGISTRY_PASSWORD $PRODUCTION_REGISTRY
+  script:
+    - docker pull git.rabex.co:5055/backend/orderengine:latest
+    - docker tag git.rabex.co:5055/backend/orderengine:latest docker-registery.rabex.co/backend/orderengine:latest
+    - docker push docker-registery.rabex.co/backend/orderengine:latest
+  when: manual
+  only:
+    - master
+  tags:
+    - build
+    - docker
+    - go
+
+deploy-pro:
+  stage: deploy-pro
+  before_script:
+    - docker login -u $PRODUCTION_REGISTRY_USER -p $PRODUCTION_REGISTRY_PASSWORD $PRODUCTION_REGISTRY
+  script:
+    - docker network create -d overlay nginx || true
+    - docker network create -d overlay backend || true
+    - docker-compose -f ./docker-stack.yml pull
+    - docker stack deploy --with-registry-auth -c ./docker-stack.yml backend
+  only:
+    - master
+  tags:
+    - services-1
+    - ssh
+  needs:
+    - build-pro

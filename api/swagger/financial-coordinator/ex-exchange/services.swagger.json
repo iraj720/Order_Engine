@@ -1,0 +1,851 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "financial-coordinator/ex-exchange/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ExternalExchangeCoordinator"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/financial-coordinator/externalexchange/buy": {
+      "post": {
+        "summary": "(ADMIN) MarketBuyManual",
+        "operationId": "ExternalExchangeCoordinator_MarketBuyManual",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/exExchangeMarketBuyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exExchangeMarketBuyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/cancel": {
+      "post": {
+        "summary": "(ADMIN) Cancel",
+        "operationId": "ExternalExchangeCoordinator_Cancel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/exExchangeCancelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exExchangeCancelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/comment": {
+      "post": {
+        "summary": "(ADMIN) CommentCreate",
+        "operationId": "ExternalExchangeCoordinator_CommentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorexExchangeCommentCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorexExchangeCommentCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/comments/{transactionId}": {
+      "get": {
+        "summary": "(ADMIN) CommentList",
+        "operationId": "ExternalExchangeCoordinator_CommentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorexExchangeCommentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/declare": {
+      "post": {
+        "summary": "(ADMIN) FilledDeclare",
+        "operationId": "ExternalExchangeCoordinator_FilledDeclare",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/exExchangeFilledDeclareResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exExchangeFilledDeclareRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/filter": {
+      "post": {
+        "summary": "(ADMIN) Filter",
+        "operationId": "ExternalExchangeCoordinator_Filter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/exExchangeFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exExchangeFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/retry": {
+      "post": {
+        "summary": "////////////////////////////////////////////////////////\n///// External exchange order actions\n////////////////////////////////////////////////////////\n(ADMIN) Retry",
+        "operationId": "ExternalExchangeCoordinator_Retry",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/exExchangeRetryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exExchangeRetryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/externalexchange/sell": {
+      "post": {
+        "summary": "(ADMIN) MarketSellManual",
+        "operationId": "ExternalExchangeCoordinator_MarketSellManual",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/exExchangeMarketSellResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exExchangeMarketSellRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExternalExchangeCoordinator"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "exExchangeCancelRequest": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "exExchangeCancelResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeCommentListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatorexExchangeComment"
+          }
+        }
+      }
+    },
+    "exExchangeExchangeType": {
+      "type": "string",
+      "enum": [
+        "EXCHANGE_TYPE_UNSPECIFIED",
+        "EXCHANGE_TYPE_MARKET",
+        "EXCHANGE_TYPE_LIMIT"
+      ],
+      "default": "EXCHANGE_TYPE_UNSPECIFIED"
+    },
+    "exExchangeFilledDeclareRequest": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "executedQty": {
+          "type": "string"
+        },
+        "cummulativeQuoteQty": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/exExchangeOrderFillsDeclared"
+          }
+        }
+      }
+    },
+    "exExchangeFilledDeclareResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeFilterRequest": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "baseQuantityFloor": {
+          "type": "string"
+        },
+        "baseQuantityCeil": {
+          "type": "string"
+        },
+        "quoteQuantityFloor": {
+          "type": "string"
+        },
+        "quoteQuantityCeil": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdatedTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdatedTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorexExchangeExchangeStatus"
+        },
+        "type": {
+          "$ref": "#/definitions/exExchangeExchangeType"
+        },
+        "side": {
+          "$ref": "#/definitions/financialCoordinatorexExchangeExchangeSide"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isCsvRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "exExchangeFilterResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/exExchangeFilterResponseData",
+          "title": "repeated string error = 3;"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeFilterResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatorexExchangeOrder"
+          }
+        }
+      }
+    },
+    "exExchangeMarketBuyRequest": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "quoteQty": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "brokerWarehouse": {
+          "type": "string"
+        },
+        "brokerTreasury": {
+          "type": "string"
+        },
+        "brokerChannel": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeMarketBuyResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeMarketSellRequest": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "baseQty": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "brokerWarehouse": {
+          "type": "string"
+        },
+        "brokerTreasury": {
+          "type": "string"
+        },
+        "brokerChannel": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeMarketSellResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "exExchangeOrderFillsDeclared": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "commissionAsset": {
+          "type": "string"
+        },
+        "commissionQuantity": {
+          "type": "string"
+        }
+      },
+      "title": "This is used when admin wants to declare fills"
+    },
+    "exExchangeRetryRequest": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "exExchangeRetryResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorexExchangeComment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "commenter": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "commenterName": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorexExchangeCommentCreateRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorexExchangeCommentCreateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorexExchangeComment",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatorexExchangeCommentListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status=1;"
+        },
+        "data": {
+          "$ref": "#/definitions/exExchangeCommentListResponseData",
+          "title": "repeated string error=3;"
+        }
+      }
+    },
+    "financialCoordinatorexExchangeExchangeSide": {
+      "type": "string",
+      "enum": [
+        "EXCHANGE_SIDE_UNSPECIFIED",
+        "EXCHANGE_SIDE_BUY",
+        "EXCHANGE_SIDE_SELL"
+      ],
+      "default": "EXCHANGE_SIDE_UNSPECIFIED"
+    },
+    "financialCoordinatorexExchangeExchangeStatus": {
+      "type": "string",
+      "enum": [
+        "EXCHANGE_STATUS_UNSPECIFIED",
+        "EXCHANGE_STATUS_NEW",
+        "EXCHANGE_STATUS_PENDING",
+        "EXCHANGE_STATUS_FAILED",
+        "EXCHANGE_STATUS_FILLED",
+        "EXCHANGE_STATUS_CANCELLED",
+        "EXCHANGE_STATUS_COMPLETED",
+        "EXCHANGE_STATUS_WAITINGFORADMIN"
+      ],
+      "default": "EXCHANGE_STATUS_UNSPECIFIED"
+    },
+    "financialCoordinatorexExchangeOrder": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "baseQuantity": {
+          "type": "string"
+        },
+        "quoteQuantity": {
+          "type": "string"
+        },
+        "executedQuantity": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorexExchangeExchangeStatus"
+        },
+        "type": {
+          "$ref": "#/definitions/exExchangeExchangeType"
+        },
+        "side": {
+          "$ref": "#/definitions/financialCoordinatorexExchangeExchangeSide"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "metaData": {
+          "type": "string"
+        },
+        "attempts": {
+          "type": "string",
+          "format": "int64"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatorexExchangeOrderFills"
+          }
+        },
+        "cummulativeQuoteQty": {
+          "type": "string"
+        },
+        "initiator": {
+          "type": "string"
+        },
+        "initiatorName": {
+          "type": "string"
+        }
+      },
+      "title": "This is an external exchange order. \nThis order keep track of rabex 3rd party (external) exchange orders"
+    },
+    "financialCoordinatorexExchangeOrderFills": {
+      "type": "object",
+      "properties": {
+        "orderFillsId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "price": {
+          "type": "string"
+        },
+        "commissionAsset": {
+          "type": "string"
+        },
+        "commissionQuantity": {
+          "type": "string"
+        },
+        "commissionPrice": {
+          "type": "string"
+        }
+      },
+      "description": "This shows how an external order fullfilled."
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    }
+  }
+}

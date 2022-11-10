@@ -1,0 +1,2950 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "financial-coordinator/crypto/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "CryptoDeposit"
+    },
+    {
+      "name": "CryptoWithdraw"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/financial-coordinator/crypto/deposit/claim/init": {
+      "post": {
+        "summary": "(USER) DepositClaimInit initializes deposit claim",
+        "operationId": "CryptoDeposit_DepositClaimInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/claim/init-pod": {
+      "post": {
+        "summary": "(ADMIN) DepositClaimInitPod accepts claim and pod from admin. Then initializes deposit claim\n, enters trx_info and claim will be 'pod'",
+        "operationId": "CryptoDeposit_DepositClaimInitPod",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimInitPodResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimInitPodRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/claim/list/{page}/{pageLimit}": {
+      "get": {
+        "summary": "(ADMIN) DepositClaimList",
+        "operationId": "CryptoDeposit_DepositClaimList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pageLimit",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/claim/pod": {
+      "post": {
+        "summary": "(USER) DepositClaimPod accepts proof of deposit from user",
+        "operationId": "CryptoDeposit_DepositClaimPod",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimPodResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimPodRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/claim/react": {
+      "post": {
+        "summary": "(ADMIN) DepositClaimReact changes deposit claim status from \"pod\", \"approved\", \"cancelled\" or \"not-confroming\"  to another",
+        "operationId": "CryptoDeposit_DepositClaimReact",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimReactResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimReactRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/claim/reconcile-init": {
+      "post": {
+        "summary": "(ADMIN) DepositClaimReconcileInit accepts claim and pod from admin. Then initializes deposit claim (type reconcilation).\nResulting status will be 'approved-to-reconcile' for further decision by admin.",
+        "operationId": "CryptoDeposit_DepositClaimReconcileInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimReconcileInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimReconcileInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/claim/update": {
+      "post": {
+        "summary": "(ADMIN) UpdateDepositClaim updates deposit claim. It can be used for claim statuses,\n'aborted', 'not-conforming', 'pod', 'trx-ready', 'trx-ready-to-reconcile', 'cancelled'.",
+        "operationId": "CryptoDeposit_UpdateDepositClaim",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoUpdateDepositClaimResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoUpdateDepositClaimRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/comment": {
+      "post": {
+        "summary": "(ADMIN) DepositCommentCreate",
+        "operationId": "CryptoDeposit_DepositCommentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositCommentCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositCommentCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/comments/{transactionId}": {
+      "get": {
+        "summary": "(ADMIN) DepositCommentList",
+        "operationId": "CryptoDeposit_DepositCommentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositCommentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/fullnode/cancel": {
+      "post": {
+        "summary": "(Crypto-Gatway) DepositFullNodeCancel cancel 'waiting for confirmation' trx",
+        "operationId": "CryptoDeposit_DepositFullNodeCancel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositFullNodeCancelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositFullNodeCancelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/fullnode/confirm": {
+      "post": {
+        "summary": "(Crypto-Gatway) DepositFullNodeConfirm confirms 'waiting for confirmation' trx",
+        "operationId": "CryptoDeposit_DepositFullNodeConfirm",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositFullNodeConfirmResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositFullNodeConfirmRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/fullnode/init": {
+      "post": {
+        "summary": "(Crypto-Gatway) DepositFullNodeInit",
+        "operationId": "CryptoDeposit_DepositFullNodeInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositFullNodeInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositFullNodeInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/confiscate": {
+      "post": {
+        "summary": "(ADMIN) DepositTransactionFinalize  confiscates deposit transaction with 'frozen' status",
+        "operationId": "CryptoDeposit_DepositTransactionConfiscate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionConfiscateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionConfiscateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/filter": {
+      "post": {
+        "summary": "(ADMIN) DepositFilter",
+        "operationId": "CryptoDeposit_DepositFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/finalize": {
+      "post": {
+        "summary": "(ADMIN) DepositTransactionFinalize  finalizes deposit transaction with 'frozen' status",
+        "operationId": "CryptoDeposit_DepositTransactionFinalize",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionFinalizeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionFinalizeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/history": {
+      "post": {
+        "summary": "(USER) DepositHistory",
+        "operationId": "CryptoDeposit_DepositHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoDepositHistoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/init": {
+      "post": {
+        "summary": "(ADMIN) DepositTransactionInit initializes deposit transaction with 'claim-approved' status\nand based on specified actions finalize, confiscate or freeze the deposit transaction",
+        "operationId": "CryptoDeposit_DepositTransactionInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/list/{page}/{pageLimit}": {
+      "get": {
+        "summary": "(ADMIN) DepositTransactionList",
+        "operationId": "CryptoDeposit_DepositTransactionList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pageLimit",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/reconcile": {
+      "post": {
+        "summary": "(ADMIN) DepositClaimReconcile reconcile deposit transaction with 'approved-to-reconcile' status\nand based on specified actions finalize, confiscate the deposit transaction",
+        "operationId": "CryptoDeposit_DepositClaimReconcile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimReconcileResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositClaimReconcileRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/deposit/transaction/suspend": {
+      "post": {
+        "summary": "(ADMIN) DepositTransactionSuspend  makes suspend deposit transactions",
+        "operationId": "CryptoDeposit_DepositTransactionSuspend",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionSuspendResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoDepositTransactionSuspendRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/comment": {
+      "post": {
+        "summary": "(ADMIN) WithdrawCommentCreate",
+        "operationId": "CryptoWithdraw_WithdrawCommentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCommentCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCommentCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/comments/{transactionId}": {
+      "get": {
+        "summary": "(ADMIN) WithdrawCommentList",
+        "operationId": "CryptoWithdraw_WithdrawCommentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCommentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/corrective": {
+      "post": {
+        "summary": "(ADMIN) WithdrawMakeCorrective reverts a withdraw transaction.\nOnly works for 'successful' or 'completed' trxs",
+        "operationId": "CryptoWithdraw_WithdrawMakeCorrective",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawMakeCorrectiveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawMakeCorrectiveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/declare/completeness": {
+      "post": {
+        "summary": "(ADMIN) WithdrawCompletenessDeclare gets txid from admin and completes the trx. Only 'successful' trx.",
+        "operationId": "CryptoWithdraw_WithdrawCompletenessDeclare",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCompletenessDeclareResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCompletenessDeclareRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/declare/settlement": {
+      "post": {
+        "summary": "(ADMIN) WithdrawSettlementDeclare gets service provid xid from admin and finalize to accounting base on it.\nOnly works for 'waiting for admin', 'miscarried', 'acc-finalize-failed' or 'frozen' trxs",
+        "operationId": "CryptoWithdraw_WithdrawSettlementDeclare",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawSettlementDeclareResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawSettlementDeclareRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/filter": {
+      "post": {
+        "summary": "(ADMIN) WithdrawFilter",
+        "operationId": "CryptoWithdraw_WithdrawFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/history": {
+      "post": {
+        "summary": "(USER) WithdrawHistory",
+        "operationId": "CryptoWithdraw_WithdrawHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawHistoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/init": {
+      "post": {
+        "summary": "(USER) WithdrawInit initializes withdraw request",
+        "operationId": "CryptoWithdraw_WithdrawInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cryptoWithdrawInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cryptoWithdrawInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/manual-init": {
+      "post": {
+        "summary": "(ADMIN) WithdrawManualInit initializes withdraw request\nreuslting status will be 'waiting for admin'",
+        "operationId": "CryptoWithdraw_WithdrawManualInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawManualInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawManualInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/crypto/withdraw/proceed": {
+      "post": {
+        "summary": "(ADMIN) WithdrawProceed takes aciton on Withdraw  transaciton\nOnly works for 'waiting for admin', 'miscarried' or 'frozen' trxs",
+        "operationId": "CryptoWithdraw_WithdrawProceed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawProceedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatorcryptoWithdrawProceedRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CryptoWithdraw"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "cryptoCryptoDepositHistory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "fromAddress": {
+          "type": "string"
+        },
+        "fromMemo": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "cryptoCryptoDepositTransaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "WorkflowId": {
+          "type": "string"
+        },
+        "WorkflowRunId": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "initiator": {
+          "type": "string"
+        },
+        "initiatorName": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositType"
+        },
+        "fromAddress": {
+          "type": "string"
+        },
+        "fromMemo": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string",
+          "title": "string broker_treasury_id = 21;"
+        },
+        "treasuryId": {
+          "type": "string",
+          "title": "string channel_id= 23;"
+        },
+        "statusCode": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        },
+        "statusMsg": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deviceIp": {
+          "type": "string"
+        },
+        "deviceMeta": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "confirmNumber": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "blockHeight": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "treasuryType": {
+          "$ref": "#/definitions/financialCoordinatorcryptoTreasuryType"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "cryptoCryptoWithdrawHistory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawStatus"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "userFeeQuantity": {
+          "type": "string"
+        },
+        "userFeeAsset": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Setteled": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "cryptoCryptoWithdrawTransaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "WorkflowId": {
+          "type": "string"
+        },
+        "WorkflowRunId": {
+          "type": "string"
+        },
+        "initiator": {
+          "type": "string",
+          "title": "string token_standard = 4;"
+        },
+        "initiatorName": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawType"
+        },
+        "fromAddress": {
+          "type": "string"
+        },
+        "fromMemo": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "treasuryType": {
+          "$ref": "#/definitions/financialCoordinatorcryptoTreasuryType"
+        },
+        "statusCode": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawStatus"
+        },
+        "statusMsg": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deviceIp": {
+          "type": "string"
+        },
+        "deviceMeta": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "confirmNumber": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "blockHeight": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Price": {
+          "type": "string"
+        },
+        "tmnPrice": {
+          "type": "string"
+        },
+        "userFeeQuantity": {
+          "type": "string"
+        },
+        "userFeeAsset": {
+          "type": "string"
+        },
+        "userFeePrice": {
+          "type": "string"
+        },
+        "transactionFeeQuantity": {
+          "type": "string"
+        },
+        "transactionFeeAsset": {
+          "type": "string"
+        },
+        "transactionFeePrice": {
+          "type": "string"
+        },
+        "serviceProviderXid": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Setteled": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "cryptoDepositClaim": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositType"
+        }
+      }
+    },
+    "cryptoDepositClaimInitPodRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userWarehouse": {
+          "type": "string"
+        },
+        "userFullName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositClaimInitPodResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaim"
+        }
+      }
+    },
+    "cryptoDepositClaimInitRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositClaimInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaimInitResponseData"
+        }
+      }
+    },
+    "cryptoDepositClaimInitResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        },
+        "countDownMinutes": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "cryptoDepositClaimListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaimListResponseData"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositClaimListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoCryptoDepositTransaction"
+          }
+        }
+      }
+    },
+    "cryptoDepositClaimPodRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        }
+      },
+      "title": "claim pod of deposit"
+    },
+    "cryptoDepositClaimPodResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaim"
+        }
+      }
+    },
+    "cryptoDepositClaimReactRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "toStatus": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        }
+      }
+    },
+    "cryptoDepositClaimReactResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositCurrentStatus"
+        }
+      }
+    },
+    "cryptoDepositClaimReconcileInitRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userWarehouse": {
+          "type": "string"
+        },
+        "userFullName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositClaimReconcileInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaim"
+        }
+      }
+    },
+    "cryptoDepositClaimReconcileRequest": {
+      "type": "object",
+      "properties": {
+        "suspendTrxId": {
+          "type": "string"
+        },
+        "reconciliationClaimId": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/cryptoDepositReconcileAction"
+        }
+      }
+    },
+    "cryptoDepositClaimReconcileResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaim"
+        }
+      }
+    },
+    "cryptoDepositCurrentStatus": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        }
+      }
+    },
+    "cryptoDepositFullNodeCancelRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "type": "string",
+          "title": "string asset = 1;"
+        },
+        "toAddress": {
+          "type": "string",
+          "title": "string qty = 3;\nstring treasury = 4; // user treasury"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "txId": {
+          "type": "string"
+        },
+        "toAddressIndex": {
+          "type": "string",
+          "title": "string user = 8; // uuid user in string form\nstring from_address = 12;\nstring from_memo = 13;\nuint64 block_height = 14;"
+        }
+      }
+    },
+    "cryptoDepositFullNodeCancelResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositFullNodeConfirmRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "type": "string",
+          "title": "string asset = 1;"
+        },
+        "toAddress": {
+          "type": "string",
+          "title": "string qty = 3;\nstring treasury = 4; // user treasury"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "txId": {
+          "type": "string"
+        },
+        "blockHeight": {
+          "type": "string",
+          "format": "uint64",
+          "title": "string user = 8; // uuid user in string form\nstring from_address = 12;\nstring from_memo = 13;"
+        },
+        "blockHeaderHash": {
+          "type": "string"
+        },
+        "toAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositFullNodeConfirmResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoTransactionSummary"
+        }
+      }
+    },
+    "cryptoDepositFullNodeInitRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string",
+          "title": "string treasury = 4; // user treasury"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "txId": {
+          "type": "string"
+        },
+        "fromAddress": {
+          "type": "string",
+          "title": "string user = 8; // uuid user in string form"
+        },
+        "fromMemo": {
+          "type": "string"
+        },
+        "blockHeight": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "toAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositFullNodeInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoTransactionSummary"
+        }
+      }
+    },
+    "cryptoDepositReconcileAction": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_RECONCILE_ACTION_UNSPECIFIED",
+        "DEPOSIT_RECONCILE_ACTION_FINALIZE",
+        "DEPOSIT_RECONCILE_ACTION_CONFISCATE"
+      ],
+      "default": "DEPOSIT_RECONCILE_ACTION_UNSPECIFIED"
+    },
+    "cryptoDepositTransactionAction": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_TRANSACTION_ACTION_UNSPECIFIED",
+        "DEPOSIT_TRANSACTION_ACTION_INIT_FINALIZE",
+        "DEPOSIT_TRANSACTION_ACTION_INIT_CONFISCATE",
+        "DEPOSIT_TRANSACTION_ACTION_INIT_FREEZE"
+      ],
+      "default": "DEPOSIT_TRANSACTION_ACTION_UNSPECIFIED"
+    },
+    "cryptoDepositTransactionConfiscateRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cryptoDepositTransactionConfiscateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositCurrentStatus"
+        }
+      }
+    },
+    "cryptoDepositTransactionFinalizeRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cryptoDepositTransactionFinalizeResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositCurrentStatus"
+        }
+      }
+    },
+    "cryptoDepositTransactionInitRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "$ref": "#/definitions/cryptoDepositTransactionAction"
+        }
+      }
+    },
+    "cryptoDepositTransactionInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositCurrentStatus"
+        }
+      }
+    },
+    "cryptoDepositTransactionListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositTransactionListResponseData"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositTransactionListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoCryptoDepositTransaction"
+          }
+        }
+      }
+    },
+    "cryptoDepositTransactionSuspendRequest": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoDepositTransactionSuspendRequestItem"
+          }
+        }
+      }
+    },
+    "cryptoDepositTransactionSuspendRequestItem": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoDepositTransactionSuspendResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositCurrentStatus"
+        }
+      }
+    },
+    "cryptoTransactionSummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositType"
+        },
+        "fromAddress": {
+          "type": "string"
+        },
+        "fromMemo": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string",
+          "title": "string broker_treasury_id = 21;"
+        },
+        "treasuryId": {
+          "type": "string",
+          "title": "string channel_id= 23;"
+        },
+        "statusCode": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        },
+        "statusMsg": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "blockHeight": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "treasuryType": {
+          "$ref": "#/definitions/financialCoordinatorcryptoTreasuryType"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "cryptoUpdateDepositClaimRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string"
+        },
+        "treasury": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoUpdateDepositClaimResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/cryptoDepositClaim"
+        }
+      }
+    },
+    "cryptoWithdrawInitRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        }
+      }
+    },
+    "cryptoWithdrawInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawTrxData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoComment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "commenter": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "commenterName": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositCommentCreateRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositCommentCreateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoComment",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositCommentListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status=1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositCommentListResponseData",
+          "title": "repeated string error=3;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositCommentListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatorcryptoComment"
+          }
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositFilterRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "quantityFloor": {
+          "type": "string"
+        },
+        "quantityCeil": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "treasuryId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositStatus"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositType"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "initiatorId": {
+          "type": "string"
+        },
+        "trxInfo": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isCsvRequired": {
+          "type": "boolean"
+        },
+        "fromAddress": {
+          "type": "string"
+        },
+        "fromMemo": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositFilterResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositFilterResponseData"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositFilterResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoCryptoDepositTransaction"
+          }
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositHistoryRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoDepositHistoryResponseData"
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositHistoryResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoCryptoDepositHistory"
+          }
+        }
+      }
+    },
+    "financialCoordinatorcryptoDepositStatus": {
+      "type": "string",
+      "enum": [
+        "CRYPTO_DEPOSIT_STATUS_UNSPECIFIED",
+        "CRYPTO_DEPOSIT_STATUS_CLAIM_NEW",
+        "CRYPTO_DEPOSIT_STATUS_CLAIM_POD",
+        "CRYPTO_DEPOSIT_STATUS_CLAIM_ABORTED",
+        "CRYPTO_DEPOSIT_STATUS_CLAIM_NOT_CONFORMING",
+        "CRYPTO_DEPOSIT_STATUS_CLAIM_CANCELLED",
+        "CRYPTO_DEPOSIT_STATUS_TRX_READY",
+        "CRYPTO_DEPOSIT_STATUS_TRX_READY_TO_RECONCILE",
+        "CRYPTO_DEPOSIT_STATUS_TRX_INITIATED",
+        "CRYPTO_DEPOSIT_STATUS_TRX_FINALIZED",
+        "CRYPTO_DEPOSIT_STATUS_TRX_CONFISCATED",
+        "CRYPTO_DEPOSIT_STATUS_TRX_FROZEN",
+        "CRYPTO_DEPOSIT_STATUS_TRX_WAITING_FOR_ADMIN",
+        "CRYPTO_DEPOSIT_STATUS_TRX_WAITING_FOR_CONFIRMATION",
+        "CRYPTO_DEPOSIT_STATUS_PROCESSING"
+      ],
+      "default": "CRYPTO_DEPOSIT_STATUS_UNSPECIFIED",
+      "title": "Defining deposit status"
+    },
+    "financialCoordinatorcryptoDepositType": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_TYPE_UNSPECIFIED",
+        "DEPOSIT_TYPE_CLAIM",
+        "DEPOSIT_TYPE_CLAIM_RECONCILIATION",
+        "DEPOSIT_TYPE_FULL_NODE",
+        "DEPOSIT_TYPE_TRANSACTION_SUSPENSION"
+      ],
+      "default": "DEPOSIT_TYPE_UNSPECIFIED"
+    },
+    "financialCoordinatorcryptoTreasuryType": {
+      "type": "string",
+      "enum": [
+        "TREASURY_TYPE_UNSPECIFIED",
+        "TREASURY_TYPE_THIRD_PARTY",
+        "TREASURY_TYPE_FULL_NODE"
+      ],
+      "default": "TREASURY_TYPE_UNSPECIFIED"
+    },
+    "financialCoordinatorcryptoWithdrawCommentCreateRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "title": "//////////////////////////////////////////////\n////////        WithdrawComment      /////////\n//////////////////////////////////////////////"
+    },
+    "financialCoordinatorcryptoWithdrawCommentCreateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoComment",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawCommentListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status=1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCommentListResponseData",
+          "title": "repeated string error=3;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawCommentListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatorcryptoComment"
+          }
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawCompletenessDeclareRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawCompletenessDeclareResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawTrxData"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawCurrentStatus": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawStatus"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawFilterRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "quantityFloor": {
+          "type": "string"
+        },
+        "quantityCeil": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawStatus"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawType"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "initiatorId": {
+          "type": "string"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "txId": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isCsvRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawFilterResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawFilterResponseData"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawFilterResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoCryptoWithdrawTransaction"
+          }
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawHistoryRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawHistoryResponseData"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawHistoryResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cryptoCryptoWithdrawHistory"
+          }
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawMakeCorrectiveRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawMakeCorrectiveResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawTrxData"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawManualInitRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "brokerChannelId": {
+          "type": "string"
+        },
+        "userFeeQuantity": {
+          "type": "string"
+        },
+        "userFeeAsset": {
+          "type": "string"
+        },
+        "treasuryType": {
+          "$ref": "#/definitions/financialCoordinatorcryptoTreasuryType",
+          "title": "string token_standard = 16;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawManualInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawTrxData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawProceedRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawTransactionAction"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawProceedResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawCurrentStatus"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawSettlementDeclareRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "serviceProviderXid": {
+          "type": "string"
+        },
+        "transactionFeeQuantity": {
+          "type": "string"
+        },
+        "transactionFeeAsset": {
+          "type": "string"
+        },
+        "settledTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawSettlementDeclareResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawTrxData"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawStatus": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_STATUS_UNSPECIFIED",
+        "WITHDRAW_STATUS_NEW",
+        "WITHDRAW_STATUS_WAITING_FOR_ADMIN",
+        "WITHDRAW_STATUS_TO_GATEWAY",
+        "WITHDRAW_STATUS_SUCCESSFUL",
+        "WITHDRAW_STATUS_FAILED",
+        "WITHDRAW_STATUS_MISCARRIED",
+        "WITHDRAW_STATUS_COMPLETED",
+        "WITHDRAW_STATUS_CANCELLED",
+        "WITHDRAW_STATUS_FROZEN",
+        "WITHDRAW_STATUS_CORRECTED",
+        "WITHDRAW_STATUS_ACC_FINALIZE_FAILED",
+        "WITHDRAW_STATUS_PROCESSING"
+      ],
+      "default": "WITHDRAW_STATUS_UNSPECIFIED"
+    },
+    "financialCoordinatorcryptoWithdrawTransactionAction": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_TRANSACTION_ACTION_UNSPECIFIED",
+        "WITHDRAW_TRANSACTION_ACTION_SEND_TO_GATEWAY",
+        "WITHDRAW_TRANSACTION_ACTION_CANCEL",
+        "WITHDRAW_TRANSACTION_ACTION_FREEZE"
+      ],
+      "default": "WITHDRAW_TRANSACTION_ACTION_UNSPECIFIED"
+    },
+    "financialCoordinatorcryptoWithdrawTrxData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "toMemo": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatorcryptoWithdrawStatus"
+        }
+      }
+    },
+    "financialCoordinatorcryptoWithdrawType": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_TYPE_UNSPECIFIED",
+        "WITHDRAW_TYPE_THIRD_PARTY",
+        "WITHDRAW_TYPE_FULL_NODE"
+      ],
+      "default": "WITHDRAW_TYPE_UNSPECIFIED"
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    }
+  }
+}

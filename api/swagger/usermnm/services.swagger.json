@@ -1,0 +1,7089 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "usermnm/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "UserManagement"
+    }
+  ],
+  "host": "192.168.100.6",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/user/active/mfa/resend": {
+      "get": {
+        "operationId": "UserManagement_ResendMFAActivationCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmActiveMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/activity/device": {
+      "post": {
+        "operationId": "UserManagement_UserActivityPerDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUserActivityPerDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUserActivityPerDeviceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/activity/{limit}/{offset}": {
+      "get": {
+        "operationId": "UserManagement_UserActivityPerDeviceUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUserActivityPerUserDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/add/info": {
+      "post": {
+        "operationId": "UserManagement_AddBasicInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/add/parent/referral": {
+      "post": {
+        "operationId": "UserManagement_AddParentReferralById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddParentReferralResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddParentReferralRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/address": {
+      "post": {
+        "summary": "(SYSTEM) get address returns user data",
+        "operationId": "UserManagement_GetUserByAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByAddressResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByAddressRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/address/check/{addressIndex}": {
+      "get": {
+        "summary": "(SYSTEM) DoesAddressBelongsToRabex get address  returns error if address does not belong to rabex",
+        "operationId": "UserManagement_DoesAddressBelongsToRabex",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmDoesAddressBelongsToRabexResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "addressIndex",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/address/uid/{userId}": {
+      "get": {
+        "summary": "(ADMIN) get user id  returns users address and memo",
+        "operationId": "UserManagement_GetAddressByUserID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetAddressByUserIDResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/address/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateAddressResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateAddressRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/address/validate": {
+      "post": {
+        "operationId": "UserManagement_ValidateAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmValidateAddressRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/bank/card/add": {
+      "post": {
+        "summary": "bank account",
+        "operationId": "UserManagement_AddCardAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddCardAdminRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/bank/iban/add": {
+      "post": {
+        "operationId": "UserManagement_AddIbanAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddIbanAdminRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/devices": {
+      "post": {
+        "operationId": "UserManagement_GetListOfUserDevicesByAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetListOfUserDevicesByAdminResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetListOfUserDevicesByAdminRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/flag/list": {
+      "get": {
+        "operationId": "UserManagement_FlagList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmFlagListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/list": {
+      "get": {
+        "operationId": "UserManagement_GetALLAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetALLAdminResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/referral/id": {
+      "post": {
+        "operationId": "UserManagement_GetReferralDataById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserReferralByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserReferralByIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/admin/retry/bank": {
+      "post": {
+        "operationId": "UserManagement_RetryCheckCardAndIban",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmRetryCheckCardAndIbanResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmRetryCheckCardAndIbanRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/android": {
+      "get": {
+        "summary": "(ADMIN) GetAndroidConfig returns force_update  and  optional_update",
+        "operationId": "UserManagement_GetAndroidConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetAndroidConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/android/config": {
+      "post": {
+        "summary": "(ADMIN) UpdateAndroidConfig set force_update  and  optional_update returns force_update  and  optional_update",
+        "operationId": "UserManagement_UpdateAndroidConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateAndroidConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateAndroidConfigRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/assign/kyc": {
+      "post": {
+        "operationId": "UserManagement_AssignKycToAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAssignKycToAdminRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/assign/kyc/me": {
+      "post": {
+        "operationId": "UserManagement_AssignKycToMe",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAssignKycToMeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAssignKycToMeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/account/add": {
+      "post": {
+        "operationId": "UserManagement_AddUserBankAccountCard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserBankAccountCardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/account/delete": {
+      "post": {
+        "operationId": "UserManagement_DeleteBankAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmDeleteBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmDeleteBankAccountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/account/iban/create": {
+      "post": {
+        "operationId": "UserManagement_AddUserBankAccountIBAN",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserBankAccountIBANRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/account/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateBankAccountByUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateBankAccountByUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateBankAccountByUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/account/userid": {
+      "post": {
+        "operationId": "UserManagement_GetBankAccountByUserId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetByUserIdBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetBankAccountByUserIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/admin/get": {
+      "get": {
+        "operationId": "UserManagement_GetWatingForAdminBankAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetWatingForAdminBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/bank/admin/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateBankAccountStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateBankAccountStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateBankAccountStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/basicinfo/update/state": {
+      "post": {
+        "operationId": "UserManagement_ChangeBasicInfoState",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmChangeBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/basicinfo/validate": {
+      "post": {
+        "operationId": "UserManagement_ValidateBasicInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmValidateBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/card/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateUserBankAccountCard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateUserBankAccountCardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/cardbank/verify": {
+      "post": {
+        "operationId": "UserManagement_VerifyCardBank",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyCardNumberResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyCardNumberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/change/kyc/status": {
+      "post": {
+        "operationId": "UserManagement_ChangeKycStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmChangeKycStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmChangeKycStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/comment/create": {
+      "post": {
+        "operationId": "UserManagement_AddUserComment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserCommentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserCommentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/comment/delete": {
+      "post": {
+        "operationId": "UserManagement_DeleteUserComment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmDeleteUserCommentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmDeleteUserCommentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/comment/userid": {
+      "post": {
+        "summary": "userComment",
+        "operationId": "UserManagement_GetUserCommentByUserId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserCommentByUserIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserCommentByUserIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/devices": {
+      "get": {
+        "operationId": "UserManagement_GetListOfUserDevicesByUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetListOfUserDevicesByUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/document": {
+      "post": {
+        "operationId": "UserManagement_VerifyDocument",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyDocumentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/edit/id": {
+      "post": {
+        "operationId": "UserManagement_EditUserById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmEditUserByIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/filter": {
+      "post": {
+        "operationId": "UserManagement_FilterUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmFilterUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmFilterUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/fp/sms/resend": {
+      "get": {
+        "operationId": "UserManagement_ResendForgetPasswordSMS",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmResendForgetPasswordSMSResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/get/bank/account": {
+      "get": {
+        "operationId": "UserManagement_GetUserBankAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUserBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/get/ip": {
+      "post": {
+        "operationId": "UserManagement_GetUserByIP",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByIPResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByIPRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/group/add": {
+      "post": {
+        "operationId": "UserManagement_AddGroup",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddGroupResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddGroupRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/group/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateGroup",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddGroupResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateGroupRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/history/login": {
+      "get": {
+        "operationId": "UserManagement_UserLoginHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUserLoginHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      },
+      "post": {
+        "operationId": "UserManagement_AdminLoginHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAdminLoginHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAdminLoginHistoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/iban/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateUserBankAccountIBAN",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmBankAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateUserBankAccountIBANRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/iban/verify": {
+      "post": {
+        "operationId": "UserManagement_VerifyIban",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiusermnmVerifyIbanResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiusermnmVerifyIbanRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/id": {
+      "post": {
+        "operationId": "UserManagement_GetUserById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/info": {
+      "post": {
+        "operationId": "UserManagement_GetBasicInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetBasicInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/kyc": {
+      "get": {
+        "operationId": "UserManagement_GetUserKYCData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/kyc/all/change": {
+      "get": {
+        "operationId": "UserManagement_ChangeKycAllStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmChangeKycAllStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      },
+      "post": {
+        "operationId": "UserManagement_ChangeKYCStatusAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmChangeKYCStatusAllRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/kyc/users/list": {
+      "post": {
+        "operationId": "UserManagement_GetKycList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetAllUsersKycResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetAllUsersKycRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/landline/call": {
+      "post": {
+        "operationId": "UserManagement_CallLandLineNumber",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmCallLandLineNumberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/landline/verify": {
+      "post": {
+        "operationId": "UserManagement_VerifyLandLineNumber",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyLandLineNumberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/landline/verify/admin": {
+      "post": {
+        "operationId": "UserManagement_VerifyLandLineNumberByAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyLandLineNumberByAdminRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/list/bank/account": {
+      "get": {
+        "operationId": "UserManagement_ListCardsAndIban",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmListCardsAndIbanResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/login": {
+      "post": {
+        "operationId": "UserManagement_Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmLoginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/logout": {
+      "get": {
+        "operationId": "UserManagement_LogOut",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmLogOutResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/logout/device": {
+      "post": {
+        "operationId": "UserManagement_LogOutByDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmLogOutByDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmLogOutByDeviceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/memo": {
+      "post": {
+        "summary": "(SYSTEM) get memo returns user data",
+        "operationId": "UserManagement_GetUserByMemo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByMemoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserByMemoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/active/email": {
+      "post": {
+        "operationId": "UserManagement_ActiveEmailMFA",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmActiveMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/active/ga": {
+      "post": {
+        "operationId": "UserManagement_ActiveGAMFA",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmActiveMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/active/sms": {
+      "post": {
+        "operationId": "UserManagement_ActiveSMSMFA",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmActiveMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/send": {
+      "get": {
+        "operationId": "UserManagement_SendMFA",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/verify/email": {
+      "post": {
+        "operationId": "UserManagement_VerifyEmailMFAActivation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAActivationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/verify/ga": {
+      "post": {
+        "operationId": "UserManagement_VerifyGAMFAActivation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAActivationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/mfa/verify/sms": {
+      "post": {
+        "operationId": "UserManagement_VerifySMSMFAActivation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAActivationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/my/address": {
+      "post": {
+        "summary": "(USER) get asset va network returns address va memo",
+        "operationId": "UserManagement_GetAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetAddressResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetAddressRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/password/forget/change": {
+      "post": {
+        "operationId": "UserManagement_ForgetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmForgetPasswordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmForgetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/password/forget/send": {
+      "post": {
+        "operationId": "UserManagement_SendForgetPasswordCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmSendForgetPasswordCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmSendForgetPasswordCodeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/password/forget/verify": {
+      "post": {
+        "operationId": "UserManagement_VerifyForgetPasswordCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmSendForgetPasswordCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyForgetPasswordCodeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/password/reset": {
+      "post": {
+        "operationId": "UserManagement_ResetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmResetPasswordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmResetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/permission/add": {
+      "post": {
+        "summary": "Permission",
+        "operationId": "UserManagement_AddPermission",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmPermissionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmPermission"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/permission/all": {
+      "post": {
+        "operationId": "UserManagement_SelectAllPermission",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAllPermissionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/permission/delete": {
+      "post": {
+        "operationId": "UserManagement_DeletePermission",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmDeletePermissionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmDeletePermissionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/permission/filter": {
+      "post": {
+        "operationId": "UserManagement_FilterPermission",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAllPermissionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdatePermissionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/permission/update": {
+      "post": {
+        "operationId": "UserManagement_UpdatePermission",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmPermissionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdatePermissionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/referral/count": {
+      "get": {
+        "operationId": "UserManagement_CountOfChildRefferal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmCountOfChildRefferalResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/referral/id": {
+      "post": {
+        "operationId": "UserManagement_GetUserChildReferralById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmReferralUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserReferralByIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/register": {
+      "post": {
+        "operationId": "UserManagement_RegisterUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmRegisterUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmRegisterUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/register/sms/resend": {
+      "get": {
+        "operationId": "UserManagement_ResendRegisterSMS",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmResendRegisterSMSResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/register/verify": {
+      "post": {
+        "operationId": "UserManagement_VerifyRegister",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyRegisterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyRegisterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/rejection": {
+      "get": {
+        "operationId": "UserManagement_GetRejectionReasons",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetRejectionReasonsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/remove/parent/referral": {
+      "post": {
+        "operationId": "UserManagement_RemoveReferralById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmRemoveParentReferralResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmRemoveParentReferralRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/revoke": {
+      "post": {
+        "operationId": "UserManagement_RevokeUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmRevokeUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmRevokeUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/revoke/kyc": {
+      "post": {
+        "operationId": "UserManagement_RevokeAdminKyc",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmRevokeAdminKycResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmRevokeAdminKycRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/role/add": {
+      "post": {
+        "operationId": "UserManagement_AddRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddRoleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmAddRoleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/role/delete": {
+      "post": {
+        "operationId": "UserManagement_DeleteRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmDeleteRoleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmDeleteRoleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/role/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateRoleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateRoleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/role/user/all": {
+      "post": {
+        "operationId": "UserManagement_SelectAllRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmSelectAllRoleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/role/user/id": {
+      "post": {
+        "operationId": "UserManagement_GetRoleByUserId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetRoleByUserIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetRoleByUserIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/sanity/card": {
+      "post": {
+        "operationId": "UserManagement_CardSanity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmCardSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmCardSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/sanity/filter/user": {
+      "post": {
+        "operationId": "UserManagement_FilterUserSanity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmFilterUserSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmFilterUserSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/sanity/iban": {
+      "post": {
+        "summary": "user management  sanity",
+        "operationId": "UserManagement_IbanSanity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmIbanSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmIbanSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/sanity/referer": {
+      "post": {
+        "operationId": "UserManagement_GetRefererInfoSanity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetRefererInfoSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetRefererInfoSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/sanity/user": {
+      "post": {
+        "operationId": "UserManagement_GetUserSanity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/settings/user/flag": {
+      "post": {
+        "operationId": "UserManagement_ChangeUserFlag",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateUserFlagRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/settings/user/id": {
+      "post": {
+        "operationId": "UserManagement_GetUserSettingsByUserId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmGetUserSettingsByUserIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/settings/user/update": {
+      "post": {
+        "operationId": "UserManagement_UpdateUserSettings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmAddUserSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateUserSettingsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/token/reset": {
+      "post": {
+        "operationId": "UserManagement_ResetToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmResetTokenResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmResetTokenRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/update/admin/info": {
+      "post": {
+        "operationId": "UserManagement_UpdateBasicInfoByAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetBasicInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmUpdateBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/update/info": {
+      "post": {
+        "operationId": "UserManagement_UpdateBasicInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmKYCInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/validated/CardBank": {
+      "post": {
+        "operationId": "UserManagement_GetValidatedCardBank",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmValidatedBankCardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmValidateBankCardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/validated/basicinfo": {
+      "post": {
+        "operationId": "UserManagement_GetValidatedBasicInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmGetValidatedBasicInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmValidateBasicInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/validated/iban": {
+      "post": {
+        "operationId": "UserManagement_GetValidatedIban",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmValidatedIbanResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmValidateBankCardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    },
+    "/api/v1/user/verify/mfa": {
+      "post": {
+        "operationId": "UserManagement_VerifyMFA",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFAResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usermnmVerifyMFARequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserManagement"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ActiveMFAResponsem": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Addressaddress_network_pair": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        }
+      }
+    },
+    "FilterUserResponseuser": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "nId": {
+          "type": "string"
+        },
+        "flagged": {
+          "type": "boolean"
+        },
+        "kycStatus": {
+          "type": "string"
+        },
+        "createAt": {
+          "type": "string"
+        },
+        "kycAcceptTime": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "GetAllUsersKycResponseAdmin": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "GetAllUsersKycResponseKycState": {
+      "type": "object",
+      "properties": {
+        "personalInfoSate": {
+          "type": "string"
+        },
+        "DocumentState": {
+          "type": "string"
+        },
+        "CardBankState": {
+          "type": "string"
+        },
+        "PhoneState": {
+          "type": "string"
+        },
+        "all": {
+          "type": "string"
+        },
+        "kycUpdateDate": {
+          "type": "string"
+        },
+        "kycAcceptTime": {
+          "type": "string"
+        },
+        "kycCreateTime": {
+          "type": "string"
+        },
+        "flagged": {
+          "type": "boolean"
+        },
+        "admin": {
+          "$ref": "#/definitions/GetAllUsersKycResponseAdmin"
+        },
+        "BasicInfo": {
+          "$ref": "#/definitions/GetAllUsersKycResponseUser"
+        },
+        "landLine": {
+          "$ref": "#/definitions/GetAllUsersKycResponseLandLine"
+        },
+        "parentReferral": {
+          "$ref": "#/definitions/GetAllUsersKycResponseParentReferral"
+        }
+      }
+    },
+    "GetAllUsersKycResponseLandLine": {
+      "type": "object",
+      "properties": {
+        "landLine": {
+          "type": "string"
+        }
+      }
+    },
+    "GetAllUsersKycResponseParentReferral": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        }
+      }
+    },
+    "GetAllUsersKycResponseUser": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "zipcode": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "GetValidatedBasicInfoResponser": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "birthData": {
+          "type": "string"
+        },
+        "alive": {
+          "type": "boolean"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "booklet": {
+          "type": "string"
+        }
+      }
+    },
+    "KYCDetailsBasicInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "zipcode": {
+          "type": "string"
+        },
+        "RejectionReason": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "KYCDetailsDocument": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "RejectionReason": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RetryCheckCardAndIbanRequestID": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "SelectAllRoleResponserole": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "apiusermnmAddress": {
+      "type": "object",
+      "properties": {
+        "addressIndex": {
+          "type": "string"
+        },
+        "addressNetworkPairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Addressaddress_network_pair"
+          }
+        }
+      }
+    },
+    "apiusermnmReferralResponse": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "NID": {
+          "type": "string"
+        },
+        "referralCode": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "apiusermnmVerifyIbanRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmVerifyIbanRequestData"
+          }
+        }
+      }
+    },
+    "apiusermnmVerifyIbanResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmVerifyIbanResponseData"
+          }
+        }
+      }
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "usermnmActionTypePermission": {
+      "type": "string",
+      "enum": [
+        "CREATE",
+        "READ",
+        "UPDATE",
+        "DELETE"
+      ],
+      "default": "CREATE"
+    },
+    "usermnmActiveMFAResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/ActiveMFAResponsem"
+        }
+      }
+    },
+    "usermnmAddCardAdminRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddGroupRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "titleEn": {
+          "type": "string"
+        },
+        "withdrawLimitFiat": {
+          "type": "string"
+        },
+        "withdrawLimitCrypto": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddGroupResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmAddGroupResponseData"
+        }
+      }
+    },
+    "usermnmAddGroupResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "titleEn": {
+          "type": "string"
+        },
+        "withdrawLimitFiat": {
+          "type": "string"
+        },
+        "withdrawLimitCrypto": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddIbanAdminRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddParentReferralRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "parentUserId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddParentReferralResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmAddParentReferralResponseData"
+        }
+      }
+    },
+    "usermnmAddParentReferralResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddRoleRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uint64"
+          }
+        }
+      }
+    },
+    "usermnmAddRoleResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmAddRoleResponseData"
+        }
+      }
+    },
+    "usermnmAddRoleResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmPermission"
+          }
+        }
+      }
+    },
+    "usermnmAddUserBankAccountCardRequest": {
+      "type": "object",
+      "properties": {
+        "cardNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddUserBankAccountIBANRequest": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAddUserCommentRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "commenter": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "flag": {
+          "type": "boolean"
+        }
+      }
+    },
+    "usermnmAddUserCommentResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmAddUserCommentResponseData"
+        }
+      }
+    },
+    "usermnmAddUserCommentResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "commenter": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "flag": {
+          "type": "boolean"
+        }
+      }
+    },
+    "usermnmAddUserSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmAddUserSettingsResponseData"
+        }
+      }
+    },
+    "usermnmAddUserSettingsResponseData": {
+      "type": "object",
+      "properties": {
+        "tomanWithdraw": {
+          "type": "boolean"
+        },
+        "tomanDeposit": {
+          "type": "boolean"
+        },
+        "cryptoWithdraw": {
+          "type": "boolean"
+        },
+        "cryptoDeposit": {
+          "type": "boolean"
+        },
+        "internalExchangeBuy": {
+          "type": "boolean"
+        },
+        "internalExchangeSell": {
+          "type": "boolean"
+        },
+        "internalExchangeEx": {
+          "type": "boolean"
+        },
+        "kycStatus": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "access": {
+          "type": "boolean"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "flagged": {
+          "type": "boolean"
+        },
+        "email": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sms": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ga": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmAdminLoginHistoryRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAdminLoginHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmAdminLoginHistoryResponseData"
+          }
+        }
+      }
+    },
+    "usermnmAdminLoginHistoryResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "loginTime": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAllPermissionResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmAllPermissionResponseData"
+          }
+        }
+      }
+    },
+    "usermnmAllPermissionResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "actionTypePermission": {
+          "$ref": "#/definitions/usermnmActionTypePermission"
+        }
+      }
+    },
+    "usermnmAssignKycToAdminRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAssignKycToMeRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmAssignKycToMeResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmAssignKycToMeResponseData"
+        }
+      }
+    },
+    "usermnmAssignKycToMeResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmBankAccountResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmBankAccountResponseData"
+          }
+        }
+      }
+    },
+    "usermnmBankAccountResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmBasicInfoRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "zipcode": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmCallLandLineNumberRequest": {
+      "type": "object",
+      "properties": {
+        "landLineNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmCardSanityRequest": {
+      "type": "object",
+      "properties": {
+        "cid": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "maskedCardNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmCardSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmCardSanityResponseData"
+        }
+      }
+    },
+    "usermnmCardSanityResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "isAllowed": {
+          "type": "boolean"
+        },
+        "rejectionReason": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmChangeBasicInfoRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rejectionReason": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmChangeBasicInfoRequestreason"
+          }
+        }
+      }
+    },
+    "usermnmChangeBasicInfoRequestreason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmChangeKYCStatusAllRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rejectionReason": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uint64"
+          }
+        }
+      }
+    },
+    "usermnmChangeKycAllStatusResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmChangeKycAllStatusResponseData"
+        }
+      }
+    },
+    "usermnmChangeKycAllStatusResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmChangeKycStatusRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "usermnmChangeKycStatusResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmChangeKycStatusResponseData"
+        }
+      }
+    },
+    "usermnmChangeKycStatusResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "usermnmCountOfChildRefferalResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmCountOfChildRefferalResponseR"
+        }
+      }
+    },
+    "usermnmCountOfChildRefferalResponseR": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmDeleteBankAccountRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmDeleteBankAccountResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmDeletePermissionRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmDeletePermissionResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmDeleteRoleRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmDeleteRoleResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmDeleteUserCommentRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmDeleteUserCommentResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmDoesAddressBelongsToRabexResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmDoesAddressBelongsToRabexResponseData"
+        }
+      }
+    },
+    "usermnmDoesAddressBelongsToRabexResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "treasuryId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmEditUserByIdRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "parentReferralId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "detailId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "nId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "landlineNumber": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "kycDate": {
+          "type": "string"
+        },
+        "kycStatus": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "birthdayDate": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "Revoked": {
+          "type": "boolean"
+        },
+        "Login": {
+          "type": "boolean"
+        },
+        "tomanWithdraw": {
+          "type": "boolean"
+        },
+        "tomanDeposit": {
+          "type": "boolean"
+        },
+        "cryptoWithdraw": {
+          "type": "boolean"
+        },
+        "cryptoDeposit": {
+          "type": "boolean"
+        },
+        "internalExchangeBuy": {
+          "type": "boolean"
+        },
+        "internalExchangeSell": {
+          "type": "boolean"
+        },
+        "internalExchangeEx": {
+          "type": "boolean"
+        },
+        "access": {
+          "type": "boolean"
+        },
+        "KycLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "flagged": {
+          "type": "boolean"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmFilterUserRequest": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "nId": {
+          "type": "string"
+        },
+        "registerStartDate": {
+          "type": "string"
+        },
+        "registerEndDate": {
+          "type": "string"
+        },
+        "kycStartDate": {
+          "type": "string"
+        },
+        "kycEndDate": {
+          "type": "string"
+        },
+        "kycStatus": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isCsvRequired": {
+          "type": "boolean"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmFilterUserResponse": {
+      "type": "object",
+      "properties": {
+        "csv": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/usermnmFilterUserResponseData"
+        }
+      }
+    },
+    "usermnmFilterUserResponseData": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FilterUserResponseuser"
+          }
+        },
+        "total": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "usermnmFilterUserSanityRequest": {
+      "type": "object",
+      "properties": {
+        "mobile": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmFilterUserSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmFilterUserSanityResponseData"
+          }
+        }
+      }
+    },
+    "usermnmFilterUserSanityResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "kycStatus": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isFlagged": {
+          "type": "boolean"
+        }
+      }
+    },
+    "usermnmFlagListResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmFlagListResponseData"
+          }
+        }
+      }
+    },
+    "usermnmFlagListResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmForgetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "newPassword1": {
+          "type": "string"
+        },
+        "newPassword2": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmForgetPasswordResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmForgetPasswordResponseData"
+        }
+      }
+    },
+    "usermnmForgetPasswordResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetALLAdminResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetALLAdminResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetALLAdminResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetAddressByUserIDResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetAddressByUserIDResponseData"
+        }
+      }
+    },
+    "usermnmGetAddressByUserIDResponseData": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiusermnmAddress"
+          }
+        },
+        "memo": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetAddressRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetAddressResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetAddressResponseData"
+        }
+      }
+    },
+    "usermnmGetAddressResponseData": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetAllUsersKycRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "nationalId": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "kycDateFrom": {
+          "type": "string"
+        },
+        "kycDateTo": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmGetAllUsersKycResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetAllUsersKycResponseData"
+        }
+      }
+    },
+    "usermnmGetAllUsersKycResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "kycState": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetAllUsersKycResponseKycState"
+          }
+        }
+      }
+    },
+    "usermnmGetAndroidConfigResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetAndroidConfigResponseData"
+        }
+      }
+    },
+    "usermnmGetAndroidConfigResponseData": {
+      "type": "object",
+      "properties": {
+        "forceUpdateVersion": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "optionalUpdateVersion": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "forceUpdateTitle": {
+          "type": "string"
+        },
+        "optionalUpdateTitle": {
+          "type": "string"
+        },
+        "googlePlayLink": {
+          "type": "string"
+        },
+        "cafeBazaarLink": {
+          "type": "string"
+        },
+        "forceUpdateMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optionalUpdateMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "usermnmGetBankAccountByUserIdRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetBasicInfoRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetBasicInfoResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetBasicInfoResponseData"
+        }
+      }
+    },
+    "usermnmGetBasicInfoResponseData": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "Group": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetByUserIdBankAccountResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetByUserIdBankAccountResponseAccountBank"
+          }
+        }
+      }
+    },
+    "usermnmGetByUserIdBankAccountResponseAccountBank": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmGetListOfUserDevicesByAdminRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetListOfUserDevicesByAdminResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetListOfUserDevicesByAdminResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetListOfUserDevicesByAdminResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "loginTime": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetListOfUserDevicesByUserResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetListOfUserDevicesByUserResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetListOfUserDevicesByUserResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "loginTime": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetRefererInfoSanityRequest": {
+      "type": "object",
+      "properties": {
+        "referralCode": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetRefererInfoSanityResponse": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetRejectionReasonsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetRejectionReasonsResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetRejectionReasonsResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "section": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetRoleByUserIdRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetRoleByUserIdResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetRoleByUserIdResponseData"
+        }
+      }
+    },
+    "usermnmGetRoleByUserIdResponseData": {
+      "type": "object",
+      "properties": {
+        "roleTitle": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmPermission"
+          }
+        }
+      }
+    },
+    "usermnmGetUserByAddressRequest": {
+      "type": "object",
+      "properties": {
+        "addressIndexes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "usermnmGetUserByAddressResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetUserByAddressResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetUserByAddressResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isFlagged": {
+          "type": "boolean"
+        },
+        "addressIndex": {
+          "type": "string"
+        },
+        "treasuryId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserByIPRequest": {
+      "type": "object",
+      "properties": {
+        "ipAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserByIPResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetUserByIPResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetUserByIPResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserByIdRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserByIdResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetUserByIdResponseData"
+        }
+      }
+    },
+    "usermnmGetUserByIdResponseData": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "nonce": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "parentReferralId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "settingId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "nId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "landlineNumber": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "kycDate": {
+          "type": "string"
+        },
+        "kycStatus": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "birthdayDate": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "tomanWithdraw": {
+          "type": "boolean"
+        },
+        "tomanDeposit": {
+          "type": "boolean"
+        },
+        "cryptoWithdraw": {
+          "type": "boolean"
+        },
+        "cryptoDeposit": {
+          "type": "boolean"
+        },
+        "internalExchangeBuy": {
+          "type": "boolean"
+        },
+        "internalExchangeSell": {
+          "type": "boolean"
+        },
+        "internalExchangeEx": {
+          "type": "boolean"
+        },
+        "kycLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "refId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserByMemoRequest": {
+      "type": "object",
+      "properties": {
+        "memos": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uint64"
+          }
+        }
+      }
+    },
+    "usermnmGetUserByMemoResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetUserByMemoResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetUserByMemoResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isFlagged": {
+          "type": "boolean"
+        },
+        "memo": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmGetUserCommentByUserIdRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserCommentByUserIdResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetUserCommentByUserIdResponseComment"
+          }
+        }
+      }
+    },
+    "usermnmGetUserCommentByUserIdResponseComment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "commenter": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "flag": {
+          "type": "boolean"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserReferralByIdRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetUserReferralByIdResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmGetUserReferralByIdResponseData"
+        }
+      }
+    },
+    "usermnmGetUserReferralByIdResponseData": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/apiusermnmReferralResponse"
+        },
+        "parent": {
+          "$ref": "#/definitions/apiusermnmReferralResponse"
+        },
+        "childes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiusermnmReferralResponse"
+          }
+        }
+      }
+    },
+    "usermnmGetUserSanityRequest": {
+      "type": "object",
+      "properties": {
+        "usersId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "usermnmGetUserSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetUserSanityResponseData"
+          }
+        }
+      }
+    },
+    "usermnmGetUserSanityResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "warehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "kycStatus": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isFlagged": {
+          "type": "boolean"
+        }
+      }
+    },
+    "usermnmGetUserSettingsByUserIdRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmGetValidatedBasicInfoResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/GetValidatedBasicInfoResponser"
+        }
+      }
+    },
+    "usermnmGetWatingForAdminBankAccountResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmGetWatingForAdminBankAccountResponseAccountBank"
+          }
+        }
+      }
+    },
+    "usermnmGetWatingForAdminBankAccountResponseAccountBank": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "inquiryName": {
+          "type": "string"
+        },
+        "inquiryIban": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmIbanSanityRequest": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmIbanSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmIbanSanityResponseData"
+        }
+      }
+    },
+    "usermnmIbanSanityResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "isAllowed": {
+          "type": "boolean"
+        },
+        "rejectionReason": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmKYCDetails": {
+      "type": "object",
+      "properties": {
+        "personalInfoState": {
+          "type": "string"
+        },
+        "documentState": {
+          "type": "string"
+        },
+        "phoneState": {
+          "type": "string"
+        },
+        "all": {
+          "type": "string"
+        },
+        "allRejections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "basicInfo": {
+          "$ref": "#/definitions/KYCDetailsBasicInfo"
+        },
+        "document": {
+          "$ref": "#/definitions/KYCDetailsDocument"
+        }
+      }
+    },
+    "usermnmKYCInfoResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmKYCInfoResponseData"
+        }
+      }
+    },
+    "usermnmKYCInfoResponseData": {
+      "type": "object",
+      "properties": {
+        "kyc": {
+          "$ref": "#/definitions/usermnmKYCDetails"
+        }
+      }
+    },
+    "usermnmListCardsAndIbanResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmListCardsAndIbanResponseData"
+          }
+        }
+      }
+    },
+    "usermnmListCardsAndIbanResponseData": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "card": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmLogOutByDeviceRequest": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmLogOutByDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmLogOutResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmLoginRequest": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmLoginResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmLoginResponseData"
+        }
+      }
+    },
+    "usermnmLoginResponseData": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmPermission": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "actionTypePermission": {
+          "$ref": "#/definitions/usermnmActionTypePermission"
+        }
+      }
+    },
+    "usermnmPermissionResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmPermissionResponseData"
+        }
+      }
+    },
+    "usermnmPermissionResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "actionTypePermission": {
+          "$ref": "#/definitions/usermnmActionTypePermission"
+        }
+      }
+    },
+    "usermnmReferralUserResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmReferralUserResponseData"
+        }
+      }
+    },
+    "usermnmReferralUserResponseData": {
+      "type": "object",
+      "properties": {
+        "totalChild": {
+          "type": "string"
+        },
+        "referralCode": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRegisterUserRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "parentReferralCode": {
+          "type": "string"
+        },
+        "acceptTerms": {
+          "type": "boolean"
+        }
+      }
+    },
+    "usermnmRegisterUserResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmRegisterUserResponseData"
+        }
+      }
+    },
+    "usermnmRegisterUserResponseData": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRemoveParentReferralRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRemoveParentReferralResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmRemoveParentReferralResponseData"
+        }
+      }
+    },
+    "usermnmRemoveParentReferralResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmResendForgetPasswordSMSResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmResendForgetPasswordSMSResponseData"
+        }
+      }
+    },
+    "usermnmResendForgetPasswordSMSResponseData": {
+      "type": "object",
+      "properties": {
+        "Status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmResendRegisterSMSResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmResendRegisterSMSResponseData"
+        }
+      }
+    },
+    "usermnmResendRegisterSMSResponseData": {
+      "type": "object",
+      "properties": {
+        "Status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "oldPassword": {
+          "type": "string"
+        },
+        "newPassword1": {
+          "type": "string"
+        },
+        "newPassword2": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmResetPasswordResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmResetTokenRequest": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmResetTokenResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmResetTokenResponseData"
+        }
+      }
+    },
+    "usermnmResetTokenResponseData": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRetryCheckCardAndIbanRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetryCheckCardAndIbanRequestID"
+          }
+        }
+      }
+    },
+    "usermnmRetryCheckCardAndIbanResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmRetryCheckCardAndIbanResponseData"
+        }
+      }
+    },
+    "usermnmRetryCheckCardAndIbanResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRevokeAdminKycRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRevokeAdminKycResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmRevokeAdminKycResponseData"
+        }
+      }
+    },
+    "usermnmRevokeAdminKycResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRevokeUserRequest": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmRevokeUserResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmSelectAllRoleResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SelectAllRoleResponserole"
+          }
+        }
+      }
+    },
+    "usermnmSendForgetPasswordCodeRequest": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmSendForgetPasswordCodeResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmSendForgetPasswordCodeResponseData"
+        }
+      }
+    },
+    "usermnmSendForgetPasswordCodeResponseData": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateAddressRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateAddressResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmUpdateAddressResponseData"
+        }
+      }
+    },
+    "usermnmUpdateAddressResponseData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateAndroidConfigRequest": {
+      "type": "object",
+      "properties": {
+        "forceUpdateVersion": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "optionalUpdateVersion": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "forceUpdateTitle": {
+          "type": "string"
+        },
+        "optionalUpdateTitle": {
+          "type": "string"
+        },
+        "googlePlayLink": {
+          "type": "string"
+        },
+        "cafeBazaarLink": {
+          "type": "string"
+        },
+        "forceUpdateMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optionalUpdateMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "usermnmUpdateAndroidConfigResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmUpdateAndroidConfigResponseData"
+        }
+      }
+    },
+    "usermnmUpdateAndroidConfigResponseData": {
+      "type": "object",
+      "properties": {
+        "forceUpdateVersion": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "optionalUpdateVersion": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "forceUpdateTitle": {
+          "type": "string"
+        },
+        "optionalUpdateTitle": {
+          "type": "string"
+        },
+        "googlePlayLink": {
+          "type": "string"
+        },
+        "cafeBazaarLink": {
+          "type": "string"
+        },
+        "forceUpdateMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optionalUpdateMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "usermnmUpdateBankAccountByUserRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateBankAccountByUserResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmUpdateBankAccountByUserResponseAccountBank"
+        }
+      }
+    },
+    "usermnmUpdateBankAccountByUserResponseAccountBank": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmUpdateBankAccountStatusRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmUpdateBankAccountStatusRequestData"
+          }
+        }
+      }
+    },
+    "usermnmUpdateBankAccountStatusRequestData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmUpdateBankAccountStatusResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmUpdateBankAccountStatusResponseAccountBank"
+        }
+      }
+    },
+    "usermnmUpdateBankAccountStatusResponseAccountBank": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateBasicInfoRequest": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fatherName": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "landLineNumber": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "bookletId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "Group": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateGroupRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "titleEn": {
+          "type": "string"
+        },
+        "withdrawLimitFiat": {
+          "type": "string"
+        },
+        "withdrawLimitCrypto": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdatePermissionRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "actionTypePermission": {
+          "$ref": "#/definitions/usermnmActionTypePermission"
+        }
+      }
+    },
+    "usermnmUpdateRoleRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uint64"
+          }
+        }
+      }
+    },
+    "usermnmUpdateRoleResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmUpdateRoleResponseData"
+        }
+      }
+    },
+    "usermnmUpdateRoleResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateUserBankAccountCardRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateUserBankAccountIBANRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUpdateUserFlagRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "flag": {
+          "type": "boolean"
+        }
+      }
+    },
+    "usermnmUpdateUserSettingsRequest": {
+      "type": "object",
+      "properties": {
+        "tomanWithdraw": {
+          "type": "boolean"
+        },
+        "tomanDeposit": {
+          "type": "boolean"
+        },
+        "cryptoWithdraw": {
+          "type": "boolean"
+        },
+        "cryptoDeposit": {
+          "type": "boolean"
+        },
+        "internalExchangeBuy": {
+          "type": "boolean"
+        },
+        "internalExchangeSell": {
+          "type": "boolean"
+        },
+        "internalExchangeEx": {
+          "type": "boolean"
+        },
+        "kycLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "access": {
+          "type": "boolean"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "flagged": {
+          "type": "boolean"
+        },
+        "email": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sms": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ga": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmUserActivityPerDeviceRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUserActivityPerDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmUserActivityPerDeviceResponseR"
+          }
+        }
+      }
+    },
+    "usermnmUserActivityPerDeviceResponseR": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUserActivityPerUserDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmUserActivityPerUserDeviceResponseData"
+        }
+      }
+    },
+    "usermnmUserActivityPerUserDeviceResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmUserActivityPerUserDeviceResponseR"
+          }
+        }
+      }
+    },
+    "usermnmUserActivityPerUserDeviceResponseR": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmUserBankAccountResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmUserBankAccountResponseAccountBank"
+          }
+        }
+      }
+    },
+    "usermnmUserBankAccountResponseAccountBank": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "usermnmUserLoginHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmUserLoginHistoryResponseData"
+          }
+        }
+      }
+    },
+    "usermnmUserLoginHistoryResponseData": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "loginTime": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmValidateAddressRequest": {
+      "type": "object",
+      "properties": {
+        "userid": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmValidateBankCardRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmValidateBasicInfoRequest": {
+      "type": "object",
+      "properties": {
+        "userid": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmValidatedBankCardResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmValidatedBankCardResponseR"
+        }
+      }
+    },
+    "usermnmValidatedBankCardResponseR": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        },
+        "bankName": {
+          "type": "string"
+        },
+        "card": {
+          "type": "string"
+        },
+        "deposit": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "string"
+        },
+        "depositOwner": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "trackId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmValidatedIbanResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmValidatedIbanResponseR"
+        }
+      }
+    },
+    "usermnmValidatedIbanResponseR": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "bankName": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyCardNumberRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmVerifyCardNumberRequestData"
+          }
+        }
+      }
+    },
+    "usermnmVerifyCardNumberRequestData": {
+      "type": "object",
+      "properties": {
+        "cardNumber": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyCardNumberResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmVerifyCardNumberResponseData"
+          }
+        }
+      }
+    },
+    "usermnmVerifyCardNumberResponseData": {
+      "type": "object",
+      "properties": {
+        "cardNumber": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "StatementName": {
+          "type": "string"
+        },
+        "InquiryName": {
+          "type": "string"
+        },
+        "Iban": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyDocumentRequest": {
+      "type": "object",
+      "properties": {
+        "userID": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rejectionReason": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usermnmVerifyDocumentRequestreason"
+          }
+        }
+      }
+    },
+    "usermnmVerifyDocumentRequestreason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmVerifyForgetPasswordCodeRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyIbanRequestData": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyIbanResponseData": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "inquiryName": {
+          "type": "string"
+        },
+        "statementName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "nid": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyLandLineNumberByAdminRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "usermnmVerifyLandLineNumberRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyMFAActivationRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyMFARequest": {
+      "type": "object",
+      "properties": {
+        "smsCode": {
+          "type": "string"
+        },
+        "emailCode": {
+          "type": "string"
+        },
+        "gaCode": {
+          "type": "string"
+        },
+        "serviceId": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyMFAResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmVerifyMFAResponseData"
+        }
+      }
+    },
+    "usermnmVerifyMFAResponseData": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyRegisterRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "usermnmVerifyRegisterResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/usermnmVerifyRegisterResponseData"
+        }
+      }
+    },
+    "usermnmVerifyRegisterResponseData": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

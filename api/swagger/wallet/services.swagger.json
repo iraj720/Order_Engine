@@ -1,0 +1,5145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "wallet/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Wallet"
+    }
+  ],
+  "host": "192.168.100.6",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/wallet/asset/add": {
+      "post": {
+        "summary": "--------------------------------------------\nAsset\n--------------------------------------------",
+        "operationId": "Wallet_AddAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAddAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletAddAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/all": {
+      "get": {
+        "operationId": "Wallet_GetAllAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetAllAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/get": {
+      "post": {
+        "operationId": "Wallet_GetAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/list": {
+      "post": {
+        "operationId": "Wallet_ListAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/list/tiny": {
+      "post": {
+        "operationId": "Wallet_ListTinyAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListTinyAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListTinyAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/order/update": {
+      "post": {
+        "operationId": "Wallet_UpdateAssetNetworkSelector",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAssetNetworkSelectors"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetNetworkSelectorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/setting": {
+      "get": {
+        "operationId": "Wallet_AssetSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAssetSettingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/setting/update": {
+      "post": {
+        "operationId": "Wallet_UpdateAssetSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetSettingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetSettingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/update": {
+      "post": {
+        "operationId": "Wallet_UpdateAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/update/order": {
+      "post": {
+        "operationId": "Wallet_UpdateAssetOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateOrderAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateOrderAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/asset/user/list": {
+      "get": {
+        "operationId": "Wallet_ListUserAsset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListUserAssetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/blacklist/add": {
+      "post": {
+        "summary": "------------------------------------------------------------\nBlacklist\n------------------------------------------------------------",
+        "operationId": "Wallet_AddBlacklist",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAddBlacklistResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletAddBlacklistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/blacklist/get": {
+      "post": {
+        "operationId": "Wallet_GetBlacklist",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetBlacklistResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetBlacklistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/blacklist/list": {
+      "post": {
+        "operationId": "Wallet_ListBlacklist",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListBlacklistResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListBlacklistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/blacklist/update": {
+      "post": {
+        "operationId": "Wallet_UpdateBlacklist",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateBlacklistResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateBlacklistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/config": {
+      "post": {
+        "operationId": "Wallet_SelectConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreateConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/config/create": {
+      "post": {
+        "operationId": "Wallet_CreateConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreateConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletCreateConfigRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/config/delete": {
+      "post": {
+        "operationId": "Wallet_DeleteConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreateConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletConfig"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/config/update": {
+      "post": {
+        "operationId": "Wallet_UpdateConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreateConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletConfig"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/external/exchange/setting": {
+      "post": {
+        "operationId": "Wallet_NewExternalExchangeSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeSetting"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/external/exchange/setting/update": {
+      "post": {
+        "operationId": "Wallet_UpdateExternalExchangeSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeSettingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeUpdateSettingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/external/exchange/setting/update/csv": {
+      "post": {
+        "operationId": "Wallet_UpdateExternalExchangeSettingByCSV",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateExternalExchangeSettingByCSVRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/external/exchange/settings": {
+      "post": {
+        "operationId": "Wallet_FilterExternalExchangeSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeSettingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletExternalExchangeSettingFilter"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/external/exchange/watch/assets": {
+      "post": {
+        "operationId": "Wallet_WatchAssets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletWatchAssetsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletWatchAssetsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/fairness": {
+      "post": {
+        "operationId": "Wallet_CheckAssetNetworkFeeFairness",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCheckAssetNetworkFeeFairnessResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletCheckAssetNetworkFeeFairnessRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/fullnode/list": {
+      "get": {
+        "operationId": "Wallet_GetFullNodeAssetNetworkList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetFullNodeAssetNetworkListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/mode": {
+      "post": {
+        "operationId": "Wallet_GetAssetNetworkDepositMode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetAssetNetworkDepositModeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetAssetNetworkDepositModeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/network/add": {
+      "post": {
+        "summary": "--------------------------------------------\nNetwork\n--------------------------------------------",
+        "operationId": "Wallet_AddNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAddNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletAddNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/network/get": {
+      "post": {
+        "operationId": "Wallet_GetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/network/list": {
+      "post": {
+        "operationId": "Wallet_ListNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/network/list/tiny": {
+      "post": {
+        "operationId": "Wallet_ListTinyNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListTinyNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListTinyNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/network/order/update": {
+      "post": {
+        "operationId": "Wallet_UpdateTokenStandardSelector",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAssetNetworkSelectors"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateTokenStandardSelectorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/network/update": {
+      "post": {
+        "operationId": "Wallet_UpdateNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sanity/deposit": {
+      "post": {
+        "summary": "--------------------------------------------\n  Sanity\n --------------------------------------------",
+        "operationId": "Wallet_DepositSanityCheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletDepositSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletDepositSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sanity/withdraw": {
+      "post": {
+        "operationId": "Wallet_WithdrawSanityCheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletWithdrawSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletWithdrawSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sp/add": {
+      "post": {
+        "summary": "------------------------------------------------------------\nAssetNetwork\n------------------------------------------------------------",
+        "operationId": "Wallet_AddAssetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAddAssetNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletAddAssetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sp/filter": {
+      "post": {
+        "operationId": "Wallet_FilterAssetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletFilterAssetNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletFilterAssetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sp/get": {
+      "post": {
+        "operationId": "Wallet_GetAssetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetAssetNetworkResponseList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetAssetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sp/list": {
+      "post": {
+        "operationId": "Wallet_ListAssetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListAssetNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListAssetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sp/update": {
+      "post": {
+        "operationId": "Wallet_UpdateAssetNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetNetworkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateAssetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/sp/user/filter": {
+      "post": {
+        "operationId": "Wallet_FilterAssetNetworkUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletFilterAssetNetworkUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletFilterAssetNetworkRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/spselector/get": {
+      "get": {
+        "operationId": "Wallet_GetAssetNetworkSelectors",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAssetNetworkSelectors"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/treasury/add": {
+      "post": {
+        "summary": "--------------------------------------------------\nTreasury\n--------------------------------------------------",
+        "operationId": "Wallet_AddTreasury",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAddTreasuryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletAddTreasuryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/treasury/delete": {
+      "post": {
+        "operationId": "Wallet_DeleteTreasury",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletDeleteTreasuryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletDeleteTreasuryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/treasury/get/id": {
+      "post": {
+        "operationId": "Wallet_GetTreasuryById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetTreasuryByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetTreasuryByIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/treasury/list": {
+      "post": {
+        "operationId": "Wallet_ListTreasury",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletListTreasuryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletListTreasuryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/wallet/treasury/update": {
+      "post": {
+        "operationId": "Wallet_UpdateTreasury",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpdateTreasuryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletUpdateTreasuryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GetAllAssetResponseSymbolKey": {
+      "type": "object",
+      "properties": {
+        "Symbol": {
+          "type": "string"
+        },
+        "Info": {
+          "$ref": "#/definitions/walletAssetData"
+        }
+      }
+    },
+    "ListAssetResponseDataAssets": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "exchangeTreasuryId": {
+          "type": "string"
+        },
+        "exchangeChannel": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        }
+      }
+    },
+    "ListNetworkResponseDataNetworks": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "boolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateExternalExchangeSettingByCSVRequestsetting": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "upper": {
+          "type": "number",
+          "format": "float"
+        },
+        "lower": {
+          "type": "number",
+          "format": "float"
+        },
+        "initial": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "UpdateOrderAssetRequestUpdateAsset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "UpdateOrderAssetResponseUpdatedAsset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "assetInfo": {
+          "$ref": "#/definitions/walletUpdateOrderAssetResponseAssetInfo"
+        }
+      }
+    },
+    "apiwalletPagination": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "desc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "apiwalletSymbol": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_Symbol",
+        "TMN",
+        "AGLD",
+        "STPT",
+        "MXN",
+        "UGX",
+        "RENBTC",
+        "GLM",
+        "RAY",
+        "NEAR",
+        "AUDIO",
+        "HNT",
+        "ADADOWN",
+        "CDT",
+        "SPARTA",
+        "SUSD",
+        "FARM",
+        "XNO",
+        "AION",
+        "NPXS",
+        "DGB",
+        "ZRX",
+        "BCD",
+        "EASY",
+        "SANTOS",
+        "WING",
+        "WNXM",
+        "BCH",
+        "JST",
+        "ADAUP",
+        "HOT",
+        "AR",
+        "IRIS",
+        "RAMP",
+        "BCX",
+        "SEK",
+        "TRIG",
+        "RCN",
+        "COVER",
+        "FLM",
+        "GNO",
+        "VITE",
+        "GNT",
+        "BKRW",
+        "CFX",
+        "XPR",
+        "SFP",
+        "DIA",
+        "RDN",
+        "ACA",
+        "ARDR",
+        "LOOMOLD",
+        "NEBL",
+        "ACH",
+        "SLPOLD",
+        "BEL",
+        "JUV",
+        "ACM",
+        "MINA",
+        "GRTDOWN",
+        "VTHO",
+        "PYROLD",
+        "SGB",
+        "SALT",
+        "STORM",
+        "WOO",
+        "REN",
+        "REP",
+        "ADA",
+        "ELF",
+        "REQ",
+        "STORJ",
+        "CHF",
+        "ADD",
+        "BZRX",
+        "SGT",
+        "DF",
+        "RARE",
+        "EOSDOWN",
+        "PAXG",
+        "YOYO",
+        "PAX",
+        "CHR",
+        "VND",
+        "BCHDOWN",
+        "WAVES",
+        "CHZ",
+        "ADX",
+        "XRP",
+        "WPR",
+        "JASMY",
+        "AED",
+        "FIDA",
+        "SAND",
+        "DKK",
+        "OCEAN",
+        "FOR",
+        "UMA",
+        "DREPOLD",
+        "SCRT",
+        "TUSD",
+        "EZ",
+        "TKO",
+        "WABI",
+        "RGT",
+        "IDRT",
+        "ENG",
+        "ENJ",
+        "UNIDOWN",
+        "YFII",
+        "KZT",
+        "OAX",
+        "GRT",
+        "GRS",
+        "UND",
+        "HARD",
+        "TFUEL",
+        "ENS",
+        "LEND",
+        "DLT",
+        "TROY",
+        "XLMUP",
+        "UNI",
+        "BTCDOWN",
+        "TLM",
+        "HUF",
+        "SBTC",
+        "CKB",
+        "WRX",
+        "XTZ",
+        "LUNA",
+        "ETHDOWN",
+        "AGI",
+        "BCHA",
+        "EON",
+        "EOP",
+        "EOS",
+        "GO",
+        "NCASH",
+        "RIF",
+        "NSBT",
+        "SKL",
+        "XDATA",
+        "GTC",
+        "PEN",
+        "BLINK",
+        "SOLO",
+        "SXPDOWN",
+        "HC",
+        "SKY",
+        "BURGER",
+        "NAS",
+        "NAV",
+        "GTO",
+        "WTC",
+        "XVG",
+        "EPS",
+        "DNT",
+        "CLV",
+        "FLOW",
+        "XTZDOWN",
+        "XVS",
+        "STEEM",
+        "BVND",
+        "SLP",
+        "VRT",
+        "NBS",
+        "DON",
+        "LAZIO",
+        "DOT",
+        "IQ",
+        "GRTUP",
+        "ONEINCH",
+        "KNCL",
+        "CHESS",
+        "MITH",
+        "ERD",
+        "DEGO",
+        "CND",
+        "GYEN",
+        "UNFI",
+        "FTM",
+        "POWR",
+        "ERN",
+        "GVT",
+        "WINGS",
+        "FTT",
+        "VOXEL",
+        "PHA",
+        "RLC",
+        "PHB",
+        "TRXDOWN",
+        "ATOM",
+        "XRPUP",
+        "QUICK",
+        "BLZ",
+        "SNM",
+        "BOBA",
+        "MBL",
+        "BNBUP",
+        "MTLX",
+        "SNT",
+        "PHP",
+        "SNX",
+        "LTCDOWN",
+        "FUN",
+        "SNMOLD",
+        "COP",
+        "COS",
+        "API3",
+        "USD",
+        "QKC",
+        "SUSHIUP",
+        "ROSE",
+        "GLMR",
+        "XYM",
+        "PURSE",
+        "SOL",
+        "TRXUP",
+        "CITY",
+        "ETC",
+        "BNC",
+        "BNB",
+        "CELR",
+        "UST",
+        "OGN",
+        "ETH",
+        "NEO",
+        "TOMO",
+        "CELO",
+        "KLAY",
+        "AUCTION",
+        "BADGER",
+        "HIGH",
+        "GXS",
+        "TRB",
+        "BNT",
+        "QLC",
+        "LBA",
+        "MDA",
+        "BNX",
+        "UTK",
+        "WSOL",
+        "HEGIC",
+        "MA",
+        "AMB",
+        "MC",
+        "TRU",
+        "WBNB",
+        "FUEL",
+        "DREP",
+        "TRY",
+        "TRX",
+        "MDT",
+        "NFT",
+        "MDX",
+        "XRPDOWN",
+        "AERGO",
+        "EUR",
+        "AMP",
+        "BOT",
+        "NULS",
+        "AUTO",
+        "NGN",
+        "ANC",
+        "BDOT",
+        "EGLD",
+        "ANTOLD",
+        "SPELL",
+        "PUNDIX",
+        "FXS",
+        "PLA",
+        "HNST",
+        "EVX",
+        "CRV",
+        "BAKE",
+        "ANT",
+        "NU",
+        "FLUX",
+        "ANY",
+        "LINKUP",
+        "SRM",
+        "QISWAP",
+        "TORN",
+        "PLN",
+        "QNT",
+        "ALICE",
+        "OG",
+        "MFT",
+        "OM",
+        "BTTOLD",
+        "BETH",
+        "BQX",
+        "WETH",
+        "PHBV1",
+        "BETA",
+        "BRD",
+        "SSV",
+        "BUSD",
+        "CTK",
+        "ARPA",
+        "DOTDOWN",
+        "BRL",
+        "ALCX",
+        "CTR",
+        "MATIC",
+        "IOTX",
+        "SHIB",
+        "TVK",
+        "FRONT",
+        "ZAR",
+        "DOCK",
+        "STX",
+        "PNT",
+        "QI",
+        "DENT",
+        "MBOX",
+        "SUB",
+        "POA",
+        "IOST",
+        "CAKE",
+        "ETHUP",
+        "POE",
+        "OMG",
+        "BAND",
+        "SUN",
+        "ASTR",
+        "SUNOLD",
+        "BTC",
+        "TWT",
+        "NKN",
+        "RSR",
+        "IOTA",
+        "CVC",
+        "REEF",
+        "BTG",
+        "MIR",
+        "KES",
+        "ARK",
+        "LOKA",
+        "CVP",
+        "ARN",
+        "KEY",
+        "BTS",
+        "SPARTAOLD",
+        "ARS",
+        "CVX",
+        "ONE",
+        "LINKDOWN",
+        "ONG",
+        "ANKR",
+        "SUSHI",
+        "ALGO",
+        "SC",
+        "WBTC",
+        "ONT",
+        "PPT",
+        "ONX",
+        "BTTC",
+        "RUB",
+        "PIVX",
+        "ASR",
+        "FIRO",
+        "AXSOLD",
+        "AST",
+        "MANA",
+        "DOTUP",
+        "ATA",
+        "MEETONE",
+        "QSP",
+        "ATD",
+        "NMR",
+        "MKR",
+        "DODO",
+        "LIT",
+        "ICP",
+        "ZEC",
+        "ATM",
+        "APPC",
+        "JEX",
+        "ICX",
+        "LOOM",
+        "ZEN",
+        "KP3R",
+        "DOGE",
+        "DUSK",
+        "ALPHA",
+        "BOLT",
+        "SXP",
+        "HBAR",
+        "RVN",
+        "MLN",
+        "AUD",
+        "LTOOLD",
+        "IDR",
+        "CTSI",
+        "KAVA",
+        "C98",
+        "PSG",
+        "HCC",
+        "VIDT",
+        "NOK",
+        "AVA",
+        "SYS",
+        "COCOS",
+        "STRAX",
+        "EOSUP",
+        "CZK",
+        "GAS",
+        "COVEROLD",
+        "AAVEDOWN",
+        "THETA",
+        "BCHUP",
+        "WAN",
+        "ORN",
+        "PERL",
+        "XLMDOWN",
+        "MASK",
+        "AAVE",
+        "GBP",
+        "PERP",
+        "ONEINCHUP",
+        "SXPUP",
+        "YFIDOWN",
+        "BOND",
+        "YFI",
+        "PERLOLD",
+        "MOD",
+        "BICO",
+        "OST",
+        "XEC",
+        "YGG",
+        "PEOPLE",
+        "AXS",
+        "ZIL",
+        "VAI",
+        "XEM",
+        "CTXC",
+        "KEYFI",
+        "XTZUP",
+        "BIDR",
+        "BCHSV",
+        "AAVEUP",
+        "SUSHIDOWN",
+        "COMP",
+        "ETHBNT",
+        "OMOLD",
+        "OOKI",
+        "RUNE",
+        "FORTH",
+        "KMD",
+        "GHST",
+        "IDEX",
+        "BNBDOWN",
+        "DEXE",
+        "AVAX",
+        "UAH",
+        "KNC",
+        "PROS",
+        "PROM",
+        "BTCUP",
+        "CHAT",
+        "BGBP",
+        "LPT",
+        "HIVE",
+        "BIFI",
+        "PORTO",
+        "SNGLS",
+        "PYR",
+        "WAXP",
+        "DAI",
+        "YFIUP",
+        "DAR",
+        "FET",
+        "LRC",
+        "REPV1",
+        "ADXOLD",
+        "MTH",
+        "MTL",
+        "VET",
+        "ALPACA",
+        "USDT",
+        "USDS",
+        "OXT",
+        "USDP",
+        "DASH",
+        "NVT",
+        "SWRV",
+        "EDO",
+        "ILV",
+        "GHS",
+        "BTCST",
+        "HKD",
+        "JOE",
+        "LSK",
+        "KEEP",
+        "CAD",
+        "BEAM",
+        "CAN",
+        "DCR",
+        "CREAM",
+        "DATA",
+        "IMX",
+        "ENTRP",
+        "FILUP",
+        "UNIUP",
+        "LTC",
+        "USDC",
+        "WIN",
+        "LTCUP",
+        "INJ",
+        "TCT",
+        "PARA",
+        "LTO",
+        "VGX",
+        "TRIBE",
+        "NXS",
+        "EFI",
+        "DYDX",
+        "AGIX",
+        "INR",
+        "CBK",
+        "CBM",
+        "INS",
+        "POND",
+        "JPY",
+        "LINA",
+        "XLM",
+        "LINK",
+        "QTUM",
+        "FILDOWN",
+        "SUPER",
+        "UFT",
+        "POLS",
+        "KSM",
+        "LUN",
+        "FIL",
+        "POLY",
+        "STMX",
+        "RNDR",
+        "BAL",
+        "FIO",
+        "GALA",
+        "VIB",
+        "VIA",
+        "FIS",
+        "BAR",
+        "RAD",
+        "BAT",
+        "VRAB",
+        "AKRO",
+        "NZD",
+        "MOVR",
+        "XMR",
+        "COTI",
+        "SHETAB",
+        "ARBITRUM",
+        "AVAXC",
+        "BSC",
+        "NANO",
+        "NEON3",
+        "POLYGON",
+        "TERRA",
+        "NEM",
+        "ALPINE",
+        "APE",
+        "BSW",
+        "GMT",
+        "MIOTA",
+        "KDA",
+        "MULTI",
+        "T"
+      ],
+      "default": "UNKNOWN_Symbol"
+    },
+    "apiwalletTreasuryType": {
+      "type": "string",
+      "enum": [
+        "TREASURY_TYPE_UNSPECIFIED",
+        "TREASURY_TYPE_THIRD_PARTY",
+        "TREASURY_TYPE_FULL_NODE"
+      ],
+      "default": "TREASURY_TYPE_UNSPECIFIED"
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "walletAddAssetNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "assetId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "networkId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "depositStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositAutoApprovalLimit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawAutoApprovalLimit": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "feeMultiplier": {
+          "type": "string"
+        },
+        "isDefault": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "withdrawAddressId": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "withdrawPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depositPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawChannelId": {
+          "type": "string"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        },
+        "withdrawFullNodeSupported": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "depositFullNodeSupported": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "feeEconomic": {
+          "type": "string"
+        },
+        "feeFair": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddAssetNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletAddAssetNetworkResponseData"
+        }
+      }
+    },
+    "walletAddAssetNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "assetSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositAutoApprovalLimit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawAutoApprovalLimit": {
+          "type": "string"
+        },
+        "withdrawChannel": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "feeMultiplier": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "withdrawAddressId": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "withdrawPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depositPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawChannelId": {
+          "type": "string"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        },
+        "withdrawFullNodeSupported": {
+          "type": "boolean"
+        },
+        "depositFullNodeSupported": {
+          "type": "boolean"
+        },
+        "feeEconomic": {
+          "type": "string"
+        },
+        "feeFair": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddAssetRequest": {
+      "type": "object",
+      "properties": {
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "withdrawStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "exchangeTreasuryId": {
+          "type": "string"
+        },
+        "exchangeChannel": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletAddAssetResponseData"
+        }
+      }
+    },
+    "walletAddAssetResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "exchangeTreasuryId": {
+          "type": "string"
+        },
+        "exchangeChannel": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddBlacklistRequest": {
+      "type": "object",
+      "properties": {
+        "bannedAddress": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "networkId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletAddBlacklistResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletBlacklist"
+        }
+      }
+    },
+    "walletAddNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "withdrawStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletAddNetworkResponseData"
+        }
+      }
+    },
+    "walletAddNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "boolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddTreasuryRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        },
+        "treasuryID": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAddTreasuryResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletAddTreasuryResponseData"
+        }
+      }
+    },
+    "walletAddTreasuryResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        },
+        "treasuryID": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAssetData": {
+      "type": "object",
+      "properties": {
+        "NameEn": {
+          "type": "string"
+        },
+        "NameFa": {
+          "type": "string"
+        },
+        "Logo": {
+          "type": "string"
+        }
+      }
+    },
+    "walletAssetNetworkDepositMode": {
+      "type": "string",
+      "enum": [
+        "ASSET_NETWORK_DEPOSIT_MODE_UNSPECIFIED",
+        "ASSET_NETWORK_DEPOSIT_MODE_FULL_NODE",
+        "ASSET_NETWORK_DEPOSIT_MODE_THIRD_PARTY"
+      ],
+      "default": "ASSET_NETWORK_DEPOSIT_MODE_UNSPECIFIED"
+    },
+    "walletAssetNetworkList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "assetSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositAutoApprovalLimit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawAutoApprovalLimit": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "feeMultiplier": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "withdrawAddressId": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "withdrawFee": {
+          "type": "string"
+        },
+        "withdrawPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depositPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawChannelId": {
+          "type": "string"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        },
+        "withdrawFullNodeSupported": {
+          "type": "boolean"
+        },
+        "depositFullNodeSupported": {
+          "type": "boolean"
+        },
+        "feeEconomic": {
+          "type": "string"
+        },
+        "feeFair": {
+          "type": "string"
+        },
+        "networkSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        }
+      }
+    },
+    "walletAssetNetworkSelectors": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletAssetNetworkSelectorsAsset"
+          }
+        }
+      }
+    },
+    "walletAssetNetworkSelectorsAsset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "assetSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tokenStandards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletAssetNetworkSelectorsTokenStandard"
+          }
+        }
+      }
+    },
+    "walletAssetNetworkSelectorsTokenStandard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "token": {
+          "type": "string"
+        },
+        "assetId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletAssetNetworkWithdrawMode": {
+      "type": "string",
+      "enum": [
+        "ASSET_NETWORK_WITHDRAW_MODE_UNSPECIFIED",
+        "ASSET_NETWORK_WITHDRAW_FULL_NODE",
+        "ASSET_NETWORK_WITHDRAW_THIRD_PARTY"
+      ],
+      "default": "ASSET_NETWORK_WITHDRAW_MODE_UNSPECIFIED"
+    },
+    "walletAssetSettingResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletAssetSettingResponseData"
+        }
+      }
+    },
+    "walletAssetSettingResponseData": {
+      "type": "object",
+      "properties": {
+        "assetDepositDesc": {
+          "type": "string"
+        },
+        "assetWithdrawDesc": {
+          "type": "string"
+        },
+        "assetDepositStatus": {
+          "type": "boolean"
+        },
+        "assetWithdrawStatus": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletBlacklist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "bannedAddress": {
+          "type": "string"
+        },
+        "networkId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "networkName": {
+          "type": "string"
+        }
+      }
+    },
+    "walletCheckAssetNetworkFeeFairnessRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "feeQuantity": {
+          "type": "string"
+        },
+        "feeAsset": {
+          "type": "string"
+        }
+      }
+    },
+    "walletCheckAssetNetworkFeeFairnessResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletCheckAssetNetworkFeeFairnessResponseData"
+        }
+      }
+    },
+    "walletCheckAssetNetworkFeeFairnessResponseData": {
+      "type": "object",
+      "properties": {
+        "fairness": {
+          "$ref": "#/definitions/walletFeeFairness"
+        }
+      }
+    },
+    "walletConfig": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "externalExchangeTicker": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletCreateConfigRequest": {
+      "type": "object",
+      "properties": {
+        "externalExchangeTicker": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletCreateConfigResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletConfig"
+        }
+      }
+    },
+    "walletDeleteTreasuryRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "walletDeleteTreasuryResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "walletDepositSanity": {
+      "type": "object",
+      "properties": {
+        "isWaitingForAdmin": {
+          "type": "boolean"
+        },
+        "treasuryId": {
+          "type": "string"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        },
+        "mode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        }
+      }
+    },
+    "walletDepositSanityRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        }
+      }
+    },
+    "walletDepositSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletDepositSanity"
+        }
+      }
+    },
+    "walletExternalExchangeSetting": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "upperLine": {
+          "type": "number",
+          "format": "double"
+        },
+        "lowerLine": {
+          "type": "number",
+          "format": "double"
+        },
+        "initialVal": {
+          "type": "number",
+          "format": "double"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "brokerWarehouse": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "basePrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quotePrecision": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletExternalExchangeSettingFilter": {
+      "type": "object",
+      "properties": {
+        "userUUID": {
+          "type": "string"
+        },
+        "upperLine": {
+          "type": "number",
+          "format": "double"
+        },
+        "lowerLine": {
+          "type": "number",
+          "format": "double"
+        },
+        "initialVal": {
+          "type": "number",
+          "format": "double"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "brokerWarehouse": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        }
+      }
+    },
+    "walletExternalExchangeSettingResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletExternalExchangeSetting"
+        }
+      }
+    },
+    "walletExternalExchangeSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletExternalExchangeSetting"
+          }
+        }
+      }
+    },
+    "walletExternalExchangeUpdateSettingRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "upperLine": {
+          "type": "number",
+          "format": "double"
+        },
+        "lowerLine": {
+          "type": "number",
+          "format": "double"
+        },
+        "initialVal": {
+          "type": "number",
+          "format": "double"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "brokerWarehouse": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "basePrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quotePrecision": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletFeeFairness": {
+      "type": "string",
+      "enum": [
+        "FEE_FAIRNESS_UNSPECIFIED",
+        "FEE_FAIRNESS_ECONOMIC",
+        "FEE_FAIRNESS_FAIR",
+        "FEE_FAIRNESS_UNFAIR"
+      ],
+      "default": "FEE_FAIRNESS_UNSPECIFIED"
+    },
+    "walletFilterAssetNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "assetSymbol": {
+          "type": "string"
+        }
+      }
+    },
+    "walletFilterAssetNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletFilterAssetNetworkResponseData"
+        }
+      }
+    },
+    "walletFilterAssetNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "assetSetting": {
+          "$ref": "#/definitions/walletAssetSettingResponseData"
+        },
+        "assetNetworks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletFilterAssetNetworkResponseDataAssetNetwork"
+          }
+        }
+      }
+    },
+    "walletFilterAssetNetworkResponseDataAssetNetwork": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "assetSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "tokenStandardInfo": {
+          "$ref": "#/definitions/walletFilterAssetNetworkResponseDataNetwork"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositAutoApprovalLimit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawAutoApprovalLimit": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "feeMultiplier": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "Memo": {
+          "type": "string"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "WithdrawTreasuryID": {
+          "type": "string"
+        },
+        "DepositTreasuryID": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "withdrawFee": {
+          "type": "string"
+        },
+        "withdrawPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depositPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawChannelId": {
+          "type": "string"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        },
+        "withdrawFullNodeSupported": {
+          "type": "boolean"
+        },
+        "depositFullNodeSupported": {
+          "type": "boolean"
+        },
+        "feeEconomic": {
+          "type": "string"
+        },
+        "feeFair": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string"
+        },
+        "withdrawAddressId": {
+          "type": "string"
+        }
+      }
+    },
+    "walletFilterAssetNetworkResponseDataNetwork": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "boolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        }
+      }
+    },
+    "walletFilterAssetNetworkUserResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletFilterAssetNetworkUserResponseData"
+        }
+      }
+    },
+    "walletFilterAssetNetworkUserResponseData": {
+      "type": "object",
+      "properties": {
+        "assetSetting": {
+          "$ref": "#/definitions/walletAssetSettingResponseData"
+        },
+        "assetNetworks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletFilterAssetNetworkUserResponseDataAssetNetwork"
+          }
+        }
+      }
+    },
+    "walletFilterAssetNetworkUserResponseDataAssetNetwork": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "assetSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "Memo": {
+          "type": "string"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "withdrawFee": {
+          "type": "string"
+        },
+        "assetOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawPrecision": {
+          "type": "string"
+        },
+        "depositPrecision": {
+          "type": "string"
+        },
+        "DepositTreasuryID": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "tokenStandardInfo": {
+          "$ref": "#/definitions/walletFilterAssetNetworkUserResponseDataNetwork"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        }
+      }
+    },
+    "walletFilterAssetNetworkUserResponseDataNetwork": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "boolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "networkOrder": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletGetAllAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetAllAssetResponseSymbolKey"
+          }
+        }
+      }
+    },
+    "walletGetAssetNetworkDepositModeRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        }
+      }
+    },
+    "walletGetAssetNetworkDepositModeResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletGetAssetNetworkDepositModeResponseData"
+        }
+      }
+    },
+    "walletGetAssetNetworkDepositModeResponseData": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "isMemoRequired": {
+          "type": "boolean"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletGetAssetNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletGetAssetNetworkResponseList": {
+      "type": "object",
+      "properties": {
+        "assetNetworkList": {
+          "$ref": "#/definitions/walletAssetNetworkList"
+        }
+      }
+    },
+    "walletGetAssetRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletGetAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletGetAssetResponseData"
+        }
+      }
+    },
+    "walletGetAssetResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "exchangeTreasuryId": {
+          "type": "string"
+        },
+        "exchangeChannel": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletGetBlacklistRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletGetBlacklistResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletBlacklist"
+        }
+      }
+    },
+    "walletGetFullNodeAssetNetworkListResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletGetFullNodeAssetNetworkListResponseData"
+        }
+      }
+    },
+    "walletGetFullNodeAssetNetworkListResponseData": {
+      "type": "object",
+      "properties": {
+        "assetNetworks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletAssetNetworkList"
+          }
+        }
+      }
+    },
+    "walletGetNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletGetNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletGetNetworkResponseData"
+        }
+      }
+    },
+    "walletGetNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "boolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletGetTreasuryByIdRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "walletGetTreasuryByIdResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletGetTreasuryByIdResponseData"
+        }
+      }
+    },
+    "walletGetTreasuryByIdResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        },
+        "memo": {
+          "type": "string"
+        }
+      }
+    },
+    "walletGrpcBoolean": {
+      "type": "string",
+      "enum": [
+        "GRPC_UNSPECIFIED",
+        "GRPC_TRUE",
+        "GRPC_FALSE"
+      ],
+      "default": "GRPC_UNSPECIFIED"
+    },
+    "walletListAssetNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "assetSymbol": {
+          "type": "string"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "pagination": {
+          "$ref": "#/definitions/apiwalletPagination"
+        },
+        "withCsv": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletListAssetNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletListAssetNetworkResponseData"
+        }
+      }
+    },
+    "walletListAssetNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "assetNetworks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletAssetNetworkList"
+          }
+        },
+        "csvName": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListAssetRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "pagination": {
+          "$ref": "#/definitions/apiwalletPagination"
+        },
+        "withCsv": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletListAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletListAssetResponseData"
+        }
+      }
+    },
+    "walletListAssetResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "assetSetting": {
+          "$ref": "#/definitions/walletAssetSettingResponseData"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ListAssetResponseDataAssets"
+          }
+        },
+        "csvName": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListBlacklistRequest": {
+      "type": "object",
+      "properties": {
+        "networkName": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "pagination": {
+          "$ref": "#/definitions/apiwalletPagination"
+        },
+        "withCsv": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletListBlacklistResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletListBlacklistResponseData"
+        }
+      }
+    },
+    "walletListBlacklistResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "blacklists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletBlacklist"
+          }
+        },
+        "csvName": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "pagination": {
+          "$ref": "#/definitions/apiwalletPagination"
+        },
+        "withCsv": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletListNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletListNetworkResponseData"
+        }
+      }
+    },
+    "walletListNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "networks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ListNetworkResponseDataNetworks"
+          }
+        },
+        "csvName": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListTinyAssetRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListTinyAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletListTinyAssetResponseAssets"
+          }
+        }
+      }
+    },
+    "walletListTinyAssetResponseAssets": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletListTinyNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "tokenStandard": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListTinyNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletListTinyNetworkResponseNetworks"
+          }
+        }
+      }
+    },
+    "walletListTinyNetworkResponseNetworks": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "tokenStandard": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListTreasuryRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "walletListTreasuryResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletTreasury"
+          }
+        }
+      }
+    },
+    "walletListUserAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletListUserAssetResponseData"
+        }
+      }
+    },
+    "walletListUserAssetResponseData": {
+      "type": "object",
+      "properties": {
+        "assetSetting": {
+          "$ref": "#/definitions/walletAssetSettingResponseData"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletUserAsset"
+          }
+        }
+      }
+    },
+    "walletTreasury": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        },
+        "memo": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateAssetNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositAutoApprovalLimit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawAutoApprovalLimit": {
+          "type": "string"
+        },
+        "withdrawChannel": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "feeMultiplier": {
+          "type": "string"
+        },
+        "isDefault": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "withdrawAddressId": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "withdrawPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depositPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawChannelId": {
+          "type": "string"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        },
+        "withdrawFullNodeSupported": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "depositFullNodeSupported": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "feeEconomic": {
+          "type": "string"
+        },
+        "feeFair": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateAssetNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletUpdateAssetNetworkResponseData"
+        }
+      }
+    },
+    "walletUpdateAssetNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "withdrawSoftTips": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "minDeposit": {
+          "type": "string"
+        },
+        "maxDeposit": {
+          "type": "string"
+        },
+        "depositAutoApprovalLimit": {
+          "type": "string"
+        },
+        "depositSpecialTips": {
+          "type": "string"
+        },
+        "depositSoftTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "minWithdraw": {
+          "type": "string"
+        },
+        "maxWithdraw": {
+          "type": "string"
+        },
+        "withdrawAutoApprovalLimit": {
+          "type": "string"
+        },
+        "withdrawSpecialTips": {
+          "type": "string"
+        },
+        "feeMultiplier": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "withdrawAddressId": {
+          "type": "string"
+        },
+        "depositAddressId": {
+          "type": "string"
+        },
+        "assetSymbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "withdrawPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depositPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "withdrawChannelId": {
+          "type": "string"
+        },
+        "withdrawFee": {
+          "type": "string"
+        },
+        "depositMode": {
+          "$ref": "#/definitions/walletAssetNetworkDepositMode"
+        },
+        "withdrawMode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        },
+        "withdrawFullNodeSupported": {
+          "type": "boolean"
+        },
+        "depositFullNodeSupported": {
+          "type": "boolean"
+        },
+        "feeEconomic": {
+          "type": "string"
+        },
+        "feeFair": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateAssetNetworkSelectorRequest": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletUpdateAssetNetworkSelectorRequestAsset"
+          }
+        }
+      }
+    },
+    "walletUpdateAssetNetworkSelectorRequestAsset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletUpdateAssetRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "withdrawStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "exchangeTreasuryId": {
+          "type": "string"
+        },
+        "exchangeChannel": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateAssetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletUpdateAssetResponseData"
+        }
+      }
+    },
+    "walletUpdateAssetResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "exchangeTreasuryId": {
+          "type": "string"
+        },
+        "exchangeChannel": {
+          "type": "string"
+        },
+        "balanceUpperLimit": {
+          "type": "string"
+        },
+        "balanceLowerLimit": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletUpdateAssetSettingRequest": {
+      "type": "object",
+      "properties": {
+        "assetDepositDesc": {
+          "type": "string"
+        },
+        "assetWithdrawDesc": {
+          "type": "string"
+        },
+        "assetDepositStatus": {
+          "type": "boolean"
+        },
+        "assetWithdrawStatus": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletUpdateAssetSettingResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletUpdateAssetSettingResponseData"
+        }
+      }
+    },
+    "walletUpdateAssetSettingResponseData": {
+      "type": "object",
+      "properties": {
+        "assetDepositDesc": {
+          "type": "string"
+        },
+        "assetWithdrawDesc": {
+          "type": "string"
+        },
+        "assetDepositStatus": {
+          "type": "boolean"
+        },
+        "assetWithdrawStatus": {
+          "type": "boolean"
+        }
+      }
+    },
+    "walletUpdateBlacklistRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "bannedAddress": {
+          "type": "string"
+        },
+        "networkId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "walletUpdateBlacklistResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletBlacklist"
+        }
+      }
+    },
+    "walletUpdateExternalExchangeSettingByCSVRequest": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UpdateExternalExchangeSettingByCSVRequestsetting"
+          }
+        }
+      }
+    },
+    "walletUpdateNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "withdrawStatus": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "$ref": "#/definitions/walletGrpcBoolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletUpdateNetworkResponseData"
+        }
+      }
+    },
+    "walletUpdateNetworkResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/definitions/apiwalletSymbol"
+        },
+        "tokenStandard": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "walletRegex": {
+          "type": "string"
+        },
+        "explorer": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "boolean"
+        },
+        "memoRegex": {
+          "type": "string"
+        },
+        "depositTips": {
+          "type": "string"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "withdrawTips": {
+          "type": "string"
+        },
+        "minConfirmation": {
+          "type": "string"
+        },
+        "depositAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateOrderAssetRequest": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UpdateOrderAssetRequestUpdateAsset"
+          }
+        }
+      }
+    },
+    "walletUpdateOrderAssetResponse": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UpdateOrderAssetResponseUpdatedAsset"
+          }
+        }
+      }
+    },
+    "walletUpdateOrderAssetResponseAssetInfo": {
+      "type": "object",
+      "properties": {
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        }
+      }
+    },
+    "walletUpdateTokenStandardSelectorRequest": {
+      "type": "object",
+      "properties": {
+        "tokenStandards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/walletUpdateTokenStandardSelectorRequestTokenStandard"
+          }
+        }
+      }
+    },
+    "walletUpdateTokenStandardSelectorRequestTokenStandard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletUpdateTreasuryRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        }
+      }
+    },
+    "walletUpdateTreasuryResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletUpdateTreasuryResponseData"
+        }
+      }
+    },
+    "walletUpdateTreasuryResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "broker": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        }
+      }
+    },
+    "walletUserAsset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "depositStatus": {
+          "type": "boolean"
+        },
+        "withdrawStatus": {
+          "type": "boolean"
+        },
+        "depositDesc": {
+          "type": "string"
+        },
+        "withdrawDesc": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletWatchAssetsRequest": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "walletWatchAssetsResponse": {
+      "type": "object"
+    },
+    "walletWithdrawSanity": {
+      "type": "object",
+      "properties": {
+        "isWaitingForAdmin": {
+          "type": "boolean"
+        },
+        "treasuryId": {
+          "type": "string"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "withdrawFee": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/apiwalletTreasuryType"
+        },
+        "mode": {
+          "$ref": "#/definitions/walletAssetNetworkWithdrawMode"
+        },
+        "withdrawAddressIndex": {
+          "type": "string"
+        }
+      }
+    },
+    "walletWithdrawSanityRequest": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "memo": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        }
+      }
+    },
+    "walletWithdrawSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/walletWithdrawSanity"
+        }
+      }
+    }
+  }
+}

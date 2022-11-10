@@ -1,0 +1,439 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "order_engine/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "OrderEngine"
+    }
+  ],
+  "host": "192.168.100.6",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/p2p/market/get-all": {
+      "get": {
+        "summary": "SYSTEM\nGetAllMarkets returns all of open markets\nand doesnt need any parameter",
+        "operationId": "OrderEngine_GetAllMarkets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/order_engineGetAllMarketsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OrderEngine"
+        ]
+      }
+    },
+    "/api/v1/p2p/market/init": {
+      "post": {
+        "summary": "SYSTEM\nInitiateMarket start new market and make it ready to recieving orders",
+        "operationId": "OrderEngine_InitiateMarket",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/order_engineInitiateMarketResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order_engineInitiateMarketRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderEngine"
+        ]
+      }
+    },
+    "/api/v1/p2p/market/state": {
+      "post": {
+        "summary": "SYSTEM\nGetMarketState returns state of market at this moment",
+        "operationId": "OrderEngine_GetMarketState",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/order_engineGetMarketStateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order_engineGetMarketStateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderEngine"
+        ]
+      }
+    },
+    "/api/v1/p2p/order/cancel": {
+      "post": {
+        "summary": "SYSTEM\nCancelOrder cancels order by order_id \nit will be faster if you specify the price\nin response you recieve the order_id(success) or an error",
+        "operationId": "OrderEngine_CancelOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/order_engineCancelOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order_engineCancelOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderEngine"
+        ]
+      }
+    },
+    "/api/v1/p2p/order/new": {
+      "post": {
+        "summary": "SYSTEM\nNewOrder puts new order in order-engine if market doesnt exist or its closed you will recieve an error\nyou can follow your order by order_id (subscribe to trades to see the results)\nin response you recieve the order_status",
+        "operationId": "OrderEngine_NewOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/order_engineNewOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order_engineNewOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderEngine"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiorder_engineOrder": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "baseQty": {
+          "type": "string"
+        },
+        "quoteQty": {
+          "type": "string"
+        },
+        "executedQty": {
+          "type": "string"
+        },
+        "cummulativeQuoteQty": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "minQty": {
+          "type": "string"
+        },
+        "freezeAsset": {
+          "type": "string"
+        },
+        "freezeQty": {
+          "type": "string"
+        },
+        "metaData": {
+          "$ref": "#/definitions/order_engineOrderMetaData"
+        },
+        "market": {
+          "$ref": "#/definitions/order_engineMarket"
+        },
+        "Status": {
+          "$ref": "#/definitions/order_engineOrderStatus"
+        },
+        "side": {
+          "$ref": "#/definitions/order_engineOrderSide"
+        },
+        "Type": {
+          "$ref": "#/definitions/order_engineOrderType"
+        },
+        "EntryTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "FulfillTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "order_engineCancelOrderRequest": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/apiorder_engineOrder"
+        }
+      }
+    },
+    "order_engineCancelOrderResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "string"
+        }
+      }
+    },
+    "order_engineGetAllMarketsResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "markets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/order_engineMarket"
+          }
+        }
+      }
+    },
+    "order_engineGetMarketStateRequest": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "$ref": "#/definitions/order_engineMarket"
+        }
+      }
+    },
+    "order_engineGetMarketStateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/order_engineGetMarketStateResponseData"
+        }
+      }
+    },
+    "order_engineGetMarketStateResponseData": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "$ref": "#/definitions/order_engineMarket"
+        },
+        "averagePrice": {
+          "type": "string"
+        },
+        "weightedAveragePrice": {
+          "type": "string"
+        },
+        "bidVolume": {
+          "type": "string"
+        },
+        "sellVolume": {
+          "type": "string"
+        }
+      }
+    },
+    "order_engineInitiateMarketRequest": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "$ref": "#/definitions/order_engineMarket"
+        }
+      }
+    },
+    "order_engineInitiateMarketResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "market": {
+          "$ref": "#/definitions/order_engineMarket"
+        }
+      }
+    },
+    "order_engineMarket": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        }
+      }
+    },
+    "order_engineNewOrderRequest": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/apiorder_engineOrder"
+        }
+      }
+    },
+    "order_engineNewOrderResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "order": {
+          "$ref": "#/definitions/apiorder_engineOrder"
+        }
+      }
+    },
+    "order_engineOrderMetaData": {
+      "type": "string",
+      "enum": [
+        "ORDER_METADATA_FEEDING_ENDED"
+      ],
+      "default": "ORDER_METADATA_FEEDING_ENDED"
+    },
+    "order_engineOrderSide": {
+      "type": "string",
+      "enum": [
+        "ORDER_SIDE_UNSPECIFIED",
+        "ORDER_SIDE_BUY",
+        "ORDER_SIDE_SELL"
+      ],
+      "default": "ORDER_SIDE_UNSPECIFIED"
+    },
+    "order_engineOrderStatus": {
+      "type": "string",
+      "enum": [
+        "ORDER_STATUS_UNSPECIFIED",
+        "ORDER_STATUS_NEW",
+        "ORDER_STATUS_PARTIALLY_FILLED",
+        "ORDER_STATUS_FILLED",
+        "ORDER_STATUS_CANCELLED",
+        "ORDER_STATUS_EXPIRED",
+        "ORDER_STATUS_REJECTED",
+        "ORDER_STATUS_PARTIALLY_CANCELLED",
+        "ORDER_STATUS_PARTIALLY_EXPRIRED",
+        "ORDER_STATUS_SEMI_EXPIRED",
+        "ORDER_STATUS_MARKET_CANCELLED"
+      ],
+      "default": "ORDER_STATUS_UNSPECIFIED"
+    },
+    "order_engineOrderType": {
+      "type": "string",
+      "enum": [
+        "ORDER_TYPE_UNSPECIFIED",
+        "ORDER_TYPE_MARKET",
+        "ORDER_TYPE_LIMIT"
+      ],
+      "default": "ORDER_TYPE_UNSPECIFIED",
+      "title": "Type"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    }
+  }
+}

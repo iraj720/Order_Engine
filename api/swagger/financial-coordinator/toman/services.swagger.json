@@ -1,0 +1,2601 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "financial-coordinator/toman/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "TomanDeposit"
+    },
+    {
+      "name": "TomanWithdraw"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/financial-coordinator/toman/deposit/callback": {
+      "post": {
+        "summary": "(USER) Callback; front-end will call this endpoint\nwhen user was redirected to FE by pyament service (IPG)\nresulting status will be 'failed', 'completed' or 'waiting for admin'",
+        "operationId": "TomanDeposit_DepositCallback",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositCallbackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositCallbackRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/comment": {
+      "post": {
+        "summary": "(ADMIN) DepositCommentCreate",
+        "operationId": "TomanDeposit_DepositCommentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositCommentCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositCommentCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/comments/{transactionId}": {
+      "get": {
+        "summary": "(ADMIN) DepositCommentList",
+        "operationId": "TomanDeposit_DepositCommentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositCommentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/declare": {
+      "post": {
+        "summary": "(ADMIN) DepositDeclare change 'failed' or 'payment successful manual' deposits to 'waiting for admin'",
+        "operationId": "TomanDeposit_DepositDeclare",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanDepositDeclareResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanDepositDeclareRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/filter": {
+      "post": {
+        "summary": "(ADMIN) DepositFilter",
+        "operationId": "TomanDeposit_DepositFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/history": {
+      "post": {
+        "summary": "(USER) DepositHistory",
+        "operationId": "TomanDeposit_DepositHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanDepositHistoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/init": {
+      "post": {
+        "summary": "(USER) DepositInit initializes deposit request",
+        "operationId": "TomanDeposit_DepositInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanDepositInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanDepositInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/manual": {
+      "post": {
+        "summary": "(ADMIN) DepositManual creates a deposit transaciton",
+        "operationId": "TomanDeposit_DepositManual",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanDepositManualResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanDepositManualRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/proceed": {
+      "post": {
+        "summary": "(ADMIN) DepositProceed takes aciton on deposit  transaciton\nOnly works for 'waiting for admin' or 'frozen' trxs",
+        "operationId": "TomanDeposit_DepositProceed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanDepositProceedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanDepositProceedRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/trx/init": {
+      "post": {
+        "summary": "(FIAT-GW) DepositTrxInit initializes a deposit trx\n(checks for waiting for admin and does asociated accouting)",
+        "operationId": "TomanDeposit_DepositTrxInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanDepositTrxInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanDepositTrxInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/deposit/verify": {
+      "post": {
+        "summary": "(FIAT-GW) DepositVerify verifies if deposit is valid\n(does the sanity checks and also checks whether trx is aborted or not)",
+        "operationId": "TomanDeposit_DepositVerify",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanDepositVerifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanDepositVerifyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanDeposit"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/filter": {
+      "post": {
+        "summary": "(ADMIN) DepositFilter",
+        "operationId": "TomanWithdraw_WithdrawFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/history": {
+      "post": {
+        "summary": "(USER) WithdrawHistory",
+        "operationId": "TomanWithdraw_WithdrawHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawHistoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/comment": {
+      "post": {
+        "summary": "(ADMIN) WithdrawCommentCreate",
+        "operationId": "TomanWithdraw_WithdrawCommentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawCommentCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawCommentCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/comments/{transactionId}": {
+      "get": {
+        "summary": "(ADMIN) WithdrawCommentList",
+        "operationId": "TomanWithdraw_WithdrawCommentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawCommentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/corrective": {
+      "post": {
+        "summary": "(ADMIN) WithdrawMakeCorrective reverts a withdraw transaction.\nOnly works for 'successful' or 'completed' trxs",
+        "operationId": "TomanWithdraw_WithdrawMakeCorrective",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawMakeCorrectiveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawMakeCorrectiveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/declare/completeness": {
+      "post": {
+        "summary": "(ADMIN) WithdrawCompletenessDeclare gets RRNs from admin and updates the trx fills.\nOnly 'successful' trx.\nresulting status would be 'completed'\nit can be used for 'completed' trxs to update fills.",
+        "operationId": "TomanWithdraw_WithdrawCompletenessDeclare",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawCompletenessDeclareResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawCompletenessDeclareRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/declare/settlement": {
+      "post": {
+        "summary": "(ADMIN) WithdrawSettlementDeclare gets settlement info from admin and finalize to accounting based on it.\nOnly works for 'waiting for admin', 'miscarried', 'acc-finalize-failed' or 'frozen' trxs",
+        "operationId": "TomanWithdraw_WithdrawSettlementDeclare",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawSettlementDeclareResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawSettlementDeclareRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/fills": {
+      "post": {
+        "summary": "(FIAT-GW) WithdrawTrxFill update fills with RRNs",
+        "operationId": "TomanWithdraw_WithdrawTrxFill",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawTrxFillResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawTrxFillRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/finalize": {
+      "post": {
+        "summary": "(FIAT-GW) WithdrawTrxFinalize insert fills related to withdraw trx into db\nand finalizes with accounting.\nresulting status would be 'successful'",
+        "operationId": "TomanWithdraw_WithdrawTrxFinalize",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawTrxFinalizeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawTrxFinalizeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/finalize/notify/failure": {
+      "post": {
+        "summary": "(FIAT-GW) WithdrawNotifyFailure updates withdraw trx.\nresulting status would be 'miscarried'",
+        "operationId": "TomanWithdraw_WithdrawNotifyFailure",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawNotifyFailureResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawNotifyFailureRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/init": {
+      "post": {
+        "summary": "(USER) WithdrawTrxInit initializes withdraw request",
+        "operationId": "TomanWithdraw_WithdrawTrxInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawTrxInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawTrxInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/manual": {
+      "post": {
+        "summary": "(ADMIN) WithdrawManualInit initializes withdraw request\nreuslting status will be 'waiting for admin'",
+        "operationId": "TomanWithdraw_WithdrawManualInit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawManualInitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawManualInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/notify/success": {
+      "post": {
+        "summary": "(FIAT-GW) WithdrawNotifySuccess insert fills related to withdraw trx into db\nand finalizes with accounting.\nresulting status would be 'successful'",
+        "operationId": "TomanWithdraw_WithdrawNotifySuccess",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawNotifySuccessResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tomanWithdrawNotifySuccessRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    },
+    "/api/v1/financial-coordinator/toman/withdraw/trx/proceed": {
+      "post": {
+        "summary": "(ADMIN) WithdrawProceed takes aciton on Withdraw  transaciton\nOnly works for 'waiting for admin', 'miscarried' or 'frozen' trxs",
+        "operationId": "TomanWithdraw_WithdrawProceed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawProceedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/financialCoordinatortomanWithdrawProceedRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TomanWithdraw"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "financialCoordinatortomanComment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "commenter": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "commenterName": {
+          "type": "string"
+        }
+      },
+      "title": "/////////////////////////////////////////////////\n///////           Toman Comment           ///////\n/////////////////////////////////////////////////"
+    },
+    "financialCoordinatortomanDepositCallbackRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "paymentService": {
+          "$ref": "#/definitions/tomanDepositPaymentService"
+        },
+        "action": {
+          "$ref": "#/definitions/tomanDepositAction"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositCallbackResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositCallbackResponseData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositCallbackResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositCommentCreateRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositCommentCreateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanComment",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositCommentListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status=1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositCommentListResponseData",
+          "title": "repeated string error=3;"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositCommentListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatortomanComment"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanDepositFilterRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "quantityFloor": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "quantityCeil": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "treasuryId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "initiatorId": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isCsvRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositFilterResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositFilterResponseData",
+          "title": "repeated string error = 3;"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositFilterResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanTomanDepositTransaction"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanDepositHistoryRequest": {
+      "type": "object",
+      "properties": {
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time",
+          "title": "string asset = 1;"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositHistoryResponseData"
+        }
+      }
+    },
+    "financialCoordinatortomanDepositHistoryResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanTomanDepositHistory"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanDepositStatus": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_STATUS_UNSPECIFIED",
+        "DEPOSIT_STATUS_FAILED",
+        "DEPOSIT_STATUS_ABORTED",
+        "DEPOSIT_STATUS_WAITING_FOR_ADMIN",
+        "DEPOSIT_STATUS_NEW",
+        "DEPOSIT_STATUS_PAYMENT_SUCCESSFUL",
+        "DEPOSIT_STATUS_CONFISCATED",
+        "DEPOSIT_STATUS_FROZEN",
+        "DEPOSIT_STATUS_COMPLETED",
+        "DEPOSIT_STATUS_PAYMENT_SUCCESSFUL_MANUAL",
+        "DEPOSIT_STATUS_PROCESSING"
+      ],
+      "default": "DEPOSIT_STATUS_UNSPECIFIED"
+    },
+    "financialCoordinatortomanDepositType": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_TYPE_UNSPECIFIED"
+      ],
+      "default": "DEPOSIT_TYPE_UNSPECIFIED"
+    },
+    "financialCoordinatortomanWithdrawCommentCreateRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "title": "//////////////////////////////////////////////\n////////        WithdrawComment      /////////\n//////////////////////////////////////////////"
+    },
+    "financialCoordinatortomanWithdrawCommentCreateResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanComment",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawCommentListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status=1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawCommentListResponseData",
+          "title": "repeated string error=3;"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawCommentListResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/financialCoordinatortomanComment"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawCompletenessDeclareRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawCompletenessDeclareResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanWithdrawCompletenessDeclareResponseData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawCurrentStatus": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawFilterRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "quantityFloor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "quantityCeil": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "treasuryId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "initiatorId": {
+          "type": "string"
+        },
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isCsvRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawFilterResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawFilterResponseData",
+          "title": "repeated string error = 3;"
+        },
+        "csv": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawFilterResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanTomanWithdrawTransaction"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawHistoryRequest": {
+      "type": "object",
+      "properties": {
+        "createdTimeStart": {
+          "type": "string",
+          "format": "date-time",
+          "title": "string asset = 1;"
+        },
+        "createdTimeEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageLimit": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawHistoryResponseData"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawHistoryResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanTomanWithdrawHistory"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawMakeCorrectiveRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawMakeCorrectiveResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawTrxData"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawManualInitRequest": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "userFeeQuantity": {
+          "type": "string",
+          "format": "int64",
+          "title": "string broker_channel_id = 10;"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawManualInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawTrxData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawProceedRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawTransactionAction"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawProceedResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\n  string status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawCurrentStatus"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawSettlementDeclareRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawSettlementDeclareResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanWithdrawSettlementDeclareResponseData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawStatus": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_STATUS_UNSPECIFIED",
+        "WITHDRAW_STATUS_NEW",
+        "WITHDRAW_STATUS_MISCARRIED",
+        "WITHDRAW_STATUS_WAITING_FOR_ADMIN",
+        "WITHDRAW_STATUS_FROZEN",
+        "WITHDRAW_STATUS_SENT_TO_GW",
+        "WITHDRAW_STATUS_SUCCESSFUL",
+        "WITHDRAW_STATUS_FAILED",
+        "WITHDRAW_STATUS_ACC_FINALIZING_FAILED",
+        "WITHDRAW_STATUS_CANCELED",
+        "WITHDRAW_STATUS_COMPLETED",
+        "WITHDRAW_STATUS_CORRECTED",
+        "WITHDRAW_STATUS_PROCESSING"
+      ],
+      "default": "WITHDRAW_STATUS_UNSPECIFIED"
+    },
+    "financialCoordinatortomanWithdrawTransactionAction": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_TRANSACTION_ACTION_UNSPECIFIED",
+        "WITHDRAW_TRANSACTION_ACTION_SEND_TO_GATEWAY",
+        "WITHDRAW_TRANSACTION_ACTION_CANCEL",
+        "WITHDRAW_TRANSACTION_ACTION_FREEZE"
+      ],
+      "default": "WITHDRAW_TRANSACTION_ACTION_UNSPECIFIED"
+    },
+    "financialCoordinatortomanWithdrawTrxData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "to": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        }
+      }
+    },
+    "financialCoordinatortomanWithdrawType": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_TYPE_UNSPECIFIED"
+      ],
+      "default": "WITHDRAW_TYPE_UNSPECIFIED"
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "tomanActionDepositProceed": {
+      "type": "string",
+      "enum": [
+        "ACTION_DEPOSIT_PROCEED_UNSPECIFIED",
+        "ACTION_DEPOSIT_PROCEED_FINALIZE",
+        "ACTION_DEPOSIT_PROCEED_CONFISCATE",
+        "ACTION_DEPOSIT_PROCEED_FREEZE"
+      ],
+      "default": "ACTION_DEPOSIT_PROCEED_UNSPECIFIED"
+    },
+    "tomanActionDepositTrxInit": {
+      "type": "string",
+      "enum": [
+        "ACTION_DEPOSIT_TRXINIT_UNSPECIFIED",
+        "ACTION_DEPOSIT_TRXINIT_APPROVED",
+        "ACTION_DEPOSIT_TRXINIT_FAILED"
+      ],
+      "default": "ACTION_DEPOSIT_TRXINIT_UNSPECIFIED"
+    },
+    "tomanActionDepositVerify": {
+      "type": "string",
+      "enum": [
+        "ACTION_DEPOSIT_VERIFY_UNSPECIFIED",
+        "ACTION_DEPOSIT_VERIFY_VERIFY",
+        "ACTION_DEPOSIT_VERIFY_FAILED"
+      ],
+      "default": "ACTION_DEPOSIT_VERIFY_UNSPECIFIED"
+    },
+    "tomanActionWithdrawFinalize": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_FINALIZE_ACTION_UNSPECIFIED",
+        "WITHDRAW_FINALIZE_VERIFY_ACTION",
+        "WITHDRAW_FINALIZE_FAILED_ACTION"
+      ],
+      "default": "WITHDRAW_FINALIZE_ACTION_UNSPECIFIED"
+    },
+    "tomanDepositAction": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_ACTION_UNSPECIFIED",
+        "DEPOSIT_ACTION_VERIFY",
+        "DEPOSIT_ACTION_FAILED"
+      ],
+      "default": "DEPOSIT_ACTION_UNSPECIFIED"
+    },
+    "tomanDepositDeclareRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "serviceFee": {
+          "type": "string",
+          "format": "uint64",
+          "title": "string c_i_d = 3;"
+        }
+      }
+    },
+    "tomanDepositDeclareResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanDepositDeclareResponseData"
+        }
+      }
+    },
+    "tomanDepositDeclareResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        }
+      }
+    },
+    "tomanDepositInitRequest": {
+      "type": "object",
+      "properties": {
+        "qty": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "deposit init"
+    },
+    "tomanDepositInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanDepositInitResponseData"
+        }
+      }
+    },
+    "tomanDepositInitResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string",
+          "format": "int64"
+        },
+        "countDownSeconds": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "paymentService": {
+          "$ref": "#/definitions/tomanDepositPaymentService"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "tomanDepositManualRequest": {
+      "type": "object",
+      "properties": {
+        "brokerId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerTreasuryId": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "serviceFee": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "serviceProvider": {
+          "$ref": "#/definitions/tomanDepositPaymentService"
+        }
+      }
+    },
+    "tomanDepositManualResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanDepositManualResponseData"
+        }
+      }
+    },
+    "tomanDepositManualResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        }
+      }
+    },
+    "tomanDepositPaymentService": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT_PAYMENT_SERVICE_UNSPECIFIED",
+        "DEPOSIT_PAYMENT_SERVICE_VANDAR",
+        "DEPOSIT_PAYMENT_SERVICE_JIBIT"
+      ],
+      "default": "DEPOSIT_PAYMENT_SERVICE_UNSPECIFIED"
+    },
+    "tomanDepositProceedRequest": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "$ref": "#/definitions/tomanActionDepositProceed"
+        }
+      },
+      "title": "deposit trx finalize"
+    },
+    "tomanDepositProceedResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "repeated string error = 1;\nstring status = 2;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanDepositProceedResponseData"
+        }
+      }
+    },
+    "tomanDepositProceedResponseData": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        }
+      }
+    },
+    "tomanDepositTrxInitRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/tomanActionDepositTrxInit"
+        }
+      },
+      "title": "deposit trx init"
+    },
+    "tomanDepositTrxInitResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/tomanDepositTrxInitResponseData"
+        }
+      }
+    },
+    "tomanDepositTrxInitResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/tomanActionDepositTrxInit"
+        }
+      }
+    },
+    "tomanDepositVerifyRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "string",
+          "format": "int64"
+        },
+        "from": {
+          "type": "string"
+        },
+        "cID": {
+          "type": "string"
+        },
+        "fee": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/tomanActionDepositVerify"
+        }
+      },
+      "title": "deposit verify"
+    },
+    "tomanDepositVerifyResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/tomanDepositVerifyResponseData"
+        }
+      }
+    },
+    "tomanDepositVerifyResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/tomanActionDepositVerify"
+        }
+      }
+    },
+    "tomanTomanDepositHistory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "uint64",
+          "title": "string asset = 3;"
+        },
+        "from": {
+          "type": "string",
+          "title": "string network = 5;"
+        },
+        "userWarehouseId": {
+          "type": "string",
+          "title": "string from_memo = 7;"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "tomanTomanDepositTransaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "WorkflowId": {
+          "type": "string"
+        },
+        "WorkflowRunId": {
+          "type": "string"
+        },
+        "initiator": {
+          "type": "string"
+        },
+        "initiatorName": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositType"
+        },
+        "fromAddress": {
+          "type": "string"
+        },
+        "toAddress": {
+          "type": "string",
+          "title": "string service_provider = 13;"
+        },
+        "token": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "payUrl": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string"
+        },
+        "treasuryId": {
+          "type": "string",
+          "title": "string channel_id= 23;"
+        },
+        "statusCode": {
+          "$ref": "#/definitions/financialCoordinatortomanDepositStatus"
+        },
+        "statusMsg": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deviceIp": {
+          "type": "string"
+        },
+        "deviceMeta": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "serviceProviderXid": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "$ref": "#/definitions/tomanDepositPaymentService"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "tomanTomanWithdrawHistory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "userFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "to": {
+          "type": "string",
+          "title": "string network = 5;"
+        },
+        "userWarehouseId": {
+          "type": "string",
+          "title": "string from_memo = 7;"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanTomanWithdrawHistoryFill"
+          }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "tomanTomanWithdrawHistoryFill": {
+      "type": "object",
+      "properties": {
+        "xid": {
+          "type": "string"
+        },
+        "withdrawId": {
+          "type": "string"
+        },
+        "RRN": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "toBeSettledAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "tomanTomanWithdrawTransaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "WorkflowId": {
+          "type": "string"
+        },
+        "WorkflowRunId": {
+          "type": "string"
+        },
+        "initiator": {
+          "type": "string"
+        },
+        "initiatorName": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "txid": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "network": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawType"
+        },
+        "atempts": {
+          "type": "string",
+          "format": "int64"
+        },
+        "serviceFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "toAddress": {
+          "type": "string"
+        },
+        "userFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userNid": {
+          "type": "string"
+        },
+        "userWarehouseId": {
+          "type": "string"
+        },
+        "brokerWarehouseId": {
+          "type": "string"
+        },
+        "brokerId": {
+          "type": "string",
+          "title": "string pay_url = 21;"
+        },
+        "treasuryId": {
+          "type": "string",
+          "title": "string channel_id= 23;"
+        },
+        "statusCode": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        },
+        "statusMsg": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deviceIp": {
+          "type": "string"
+        },
+        "deviceMeta": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "string"
+        },
+        "serviceProviderXid": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanTomanWithdrawTransactionFill"
+          }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "settled": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "tomanTomanWithdrawTransactionFill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "withdrawId": {
+          "type": "string"
+        },
+        "RNN": {
+          "type": "string"
+        },
+        "xId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "title": "string price = 5;"
+        },
+        "fee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/tomanWithdrawFillStatus"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "toBeSettledAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "This shows how an withdraw fullfilled."
+    },
+    "tomanWithdrawCompletenessDeclareResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "tomanWithdrawFillStatus": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_FILL_STATUS_UNSPECIFIED",
+        "WITHDRAW_FILL_STATUS_NEW",
+        "WITHDRAW_FILL_STATUS_MISCARRIED",
+        "WITHDRAW_FILL_STATUS_SUCCESSFUL",
+        "WITHDRAW_FILL_STATUS_CANCELED",
+        "WITHDRAW_FILL_STATUS_COMPLETED"
+      ],
+      "default": "WITHDRAW_FILL_STATUS_UNSPECIFIED",
+      "title": "- WITHDRAW_FILL_STATUS_CANCELED: WITHDRAW_FILL_STATUS_FAILED = 7;"
+    },
+    "tomanWithdrawNotifyFailureRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "invoice": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "paymentServiceProvider": {
+          "$ref": "#/definitions/tomanWithdrawPaymentService"
+        },
+        "failureReason": {
+          "type": "string"
+        }
+      }
+    },
+    "tomanWithdrawNotifyFailureResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/tomanWithdrawNotifyFailureResponseData"
+        }
+      }
+    },
+    "tomanWithdrawNotifyFailureResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "tomanWithdrawNotifySuccessRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "invoice": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "paymentServiceProvider": {
+          "$ref": "#/definitions/tomanWithdrawPaymentService"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "tomanWithdrawNotifySuccessResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/tomanWithdrawNotifySuccessResponseData"
+        }
+      }
+    },
+    "tomanWithdrawNotifySuccessResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "tomanWithdrawPaymentService": {
+      "type": "string",
+      "enum": [
+        "WITHDRAW_PAYMENT_SERVICE_UNSPECIFIED",
+        "WITHDRAW_PAYMENT_SERVICE_VANDAR",
+        "WITHDRAW_PAYMENT_SERVICE_JIBIT"
+      ],
+      "default": "WITHDRAW_PAYMENT_SERVICE_UNSPECIFIED"
+    },
+    "tomanWithdrawSettlementDeclareResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawStatus"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "tomanWithdrawTrxFill": {
+      "type": "object",
+      "properties": {
+        "RRN": {
+          "type": "string"
+        },
+        "fee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "settlementPrediction": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "isInstant": {
+          "type": "boolean"
+        },
+        "xId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/tomanWithdrawFillStatus"
+        }
+      }
+    },
+    "tomanWithdrawTrxFillRequest": {
+      "type": "object",
+      "properties": {
+        "xId": {
+          "type": "string"
+        },
+        "tId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "invoice": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "tomanWithdrawTrxFillResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status = 1;"
+        },
+        "data": {
+          "$ref": "#/definitions/tomanWithdrawTrxFillResponseData",
+          "title": "repeated string error = 3;"
+        }
+      }
+    },
+    "tomanWithdrawTrxFillResponseData": {
+      "type": "object",
+      "properties": {
+        "xId": {
+          "type": "string"
+        },
+        "tId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        }
+      }
+    },
+    "tomanWithdrawTrxFinalizeRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "invoice": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/tomanActionWithdrawFinalize"
+        },
+        "error": {
+          "type": "string"
+        },
+        "fills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tomanWithdrawTrxFill"
+          }
+        },
+        "treasury": {
+          "type": "string"
+        }
+      },
+      "title": "withdraw finalize (gateway response)"
+    },
+    "tomanWithdrawTrxFinalizeResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/tomanWithdrawTrxFinalizeResponseData"
+        }
+      }
+    },
+    "tomanWithdrawTrxFinalizeResponseData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "tomanWithdrawTrxInitRequest": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "title": "withdraw init"
+    },
+    "tomanWithdrawTrxInitResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "title": "string status=1;"
+        },
+        "data": {
+          "$ref": "#/definitions/financialCoordinatortomanWithdrawTrxData",
+          "title": "repeated string error=3;"
+        }
+      }
+    }
+  }
+}

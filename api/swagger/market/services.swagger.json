@@ -1,0 +1,1704 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "market/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Market"
+    }
+  ],
+  "host": "192.168.100.6",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/market/add-market": {
+      "post": {
+        "summary": "AddMarket provide access to add market and its settings",
+        "operationId": "Market_AddMarket",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketAddMarketResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketAddMarketRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/base/update": {
+      "post": {
+        "operationId": "Market_UpdateBaseSelector",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketSelectors"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketUpdateBaseSelectorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/get-prices": {
+      "post": {
+        "summary": "GetMarketsPrice returns last price of requested markets",
+        "operationId": "Market_GetMarketsPrice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketGetMarketsPriceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketGetMarketsPriceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/get_market": {
+      "post": {
+        "summary": "GetMarket fetches one pair/symbol by id",
+        "operationId": "Market_GetMarket",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketGetMarketResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketGetMarketRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/getcharts": {
+      "post": {
+        "summary": "GetMarketCharts returns KLine charts for selected market",
+        "operationId": "Market_GetMarketCharts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketGetMarketChartsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketGetMarketChartsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/list_markets": {
+      "post": {
+        "summary": "ListMarkets provide access to list of markets by pagination",
+        "operationId": "Market_ListMarkets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketListMarketsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketListMarketsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/market-status": {
+      "get": {
+        "summary": "GetOtcMarketStatus returns the market sell/buy status and BTCUSDT price",
+        "operationId": "Market_GetOtcMarketStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketGetOtcMarketStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/market/price/sanity": {
+      "post": {
+        "operationId": "Market_MarketPriceSanity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketPriceSanityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketMarketPriceSanityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/quote/update": {
+      "post": {
+        "operationId": "Market_UpdateQuoteSelector",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketSelectors"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketUpdateQuoteSelectorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/selector/update": {
+      "post": {
+        "operationId": "Market_UpdateSelector",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketSelectorsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketUpdateSelectorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/selectors": {
+      "get": {
+        "operationId": "Market_GetAllSelectors",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketSelectorsGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/subselector/update": {
+      "post": {
+        "operationId": "Market_UpdateSubSelector",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketSelectorsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketUpdateSubSelectorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/ticker/health": {
+      "get": {
+        "operationId": "Market_TickerHealthCheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketTickerHealthCheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/update-market": {
+      "post": {
+        "summary": "UpdateMarket provides access for admins to update a market settings",
+        "operationId": "Market_UpdateMarket",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketUpdateMarketResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketUpdateMarketRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/api/v1/market/update-market-status": {
+      "post": {
+        "summary": "UpdateOtcMarketStatus provide access to update OtcMarket buy/sell status",
+        "operationId": "Market_UpdateOtcMarketStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketUpdateOtcMarketStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/marketUpdateOtcMarketStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/v1/market/kline": {
+      "post": {
+        "operationId": "Market_Kline",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/marketMarketKlineStream"
+                },
+                "error": {
+                  "$ref": "#/definitions/googlerpcStatus"
+                }
+              },
+              "title": "Stream result of marketMarketKlineStream"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    },
+    "/v1/market/ref/price": {
+      "get": {
+        "operationId": "Market_MarketRefPrice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/marketMarketRefPriceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "refMarket",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "Market"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "DataKline": {
+      "type": "object",
+      "properties": {
+        "Close": {
+          "type": "string"
+        },
+        "Symbol": {
+          "type": "string"
+        },
+        "EndTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Interval": {
+          "type": "string"
+        }
+      }
+    },
+    "GetMarketChartsRequestPeriod": {
+      "type": "string",
+      "enum": [
+        "Daily",
+        "Weekly",
+        "Monthly",
+        "Yearly"
+      ],
+      "default": "Daily"
+    },
+    "GetMarketsPriceResponsePrice": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "sellPrice": {
+          "type": "string"
+        },
+        "buyPrice": {
+          "type": "string"
+        },
+        "realPrice": {
+          "type": "string"
+        }
+      }
+    },
+    "ListMarketsRequestVisibility": {
+      "type": "string",
+      "enum": [
+        "both",
+        "visible",
+        "invisible"
+      ],
+      "default": "both"
+    },
+    "MarketPriceSanityRequestdata": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "side": {
+          "$ref": "#/definitions/apicommonsSide"
+        },
+        "makerQty": {
+          "type": "string"
+        },
+        "takerQty": {
+          "type": "string"
+        }
+      }
+    },
+    "apicommonsSide": {
+      "type": "string",
+      "enum": [
+        "UNSPECIFIED",
+        "Sell",
+        "Buy"
+      ],
+      "default": "UNSPECIFIED"
+    },
+    "apimarketMarketType": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "FIAT",
+        "EXCHANGE"
+      ],
+      "default": "UNKNOWN"
+    },
+    "apimarketPagination": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "desc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "apimarketPriceSource": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_SOURCE",
+        "BINANCE",
+        "ADMIN"
+      ],
+      "default": "UNKNOWN_SOURCE"
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "marketAddMarket": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "refSymbol": {
+          "type": "string"
+        },
+        "buyPrice": {
+          "type": "string"
+        },
+        "sellPrice": {
+          "type": "string"
+        },
+        "buyMl": {
+          "type": "string"
+        },
+        "buyMin": {
+          "type": "string"
+        },
+        "buyMax": {
+          "type": "string"
+        },
+        "sellMl": {
+          "type": "string"
+        },
+        "buyStatus": {
+          "type": "boolean"
+        },
+        "sellMin": {
+          "type": "string"
+        },
+        "sellStatus": {
+          "type": "boolean"
+        },
+        "sellMax": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/apimarketMarketType"
+        },
+        "tick": {
+          "type": "string"
+        },
+        "priceSource": {
+          "$ref": "#/definitions/apimarketPriceSource"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "buyDesc": {
+          "type": "string"
+        },
+        "sellDesc": {
+          "type": "string"
+        },
+        "refPrice": {
+          "type": "string"
+        },
+        "lastUpdate": {
+          "type": "string"
+        },
+        "quotePrecision": {
+          "type": "string"
+        },
+        "basePrecision": {
+          "type": "string"
+        },
+        "sellVisibility": {
+          "type": "boolean"
+        },
+        "buyVisibility": {
+          "type": "boolean"
+        },
+        "defaultQuoteValue": {
+          "type": "string"
+        },
+        "defaultBaseValue": {
+          "type": "string"
+        }
+      }
+    },
+    "marketAddMarketRequest": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "$ref": "#/definitions/marketAddMarket"
+        }
+      },
+      "title": "AddMarketRequest\n--------------------------------------------------------------------------------"
+    },
+    "marketAddMarketResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketRabexMarket"
+        }
+      }
+    },
+    "marketGetMarket": {
+      "type": "object",
+      "properties": {
+        "BuyStatus": {
+          "type": "boolean"
+        },
+        "SellStatus": {
+          "type": "boolean"
+        },
+        "Quote": {
+          "type": "string"
+        },
+        "Base": {
+          "type": "string"
+        },
+        "BuyDesc": {
+          "type": "string"
+        },
+        "SellDesc": {
+          "type": "string"
+        },
+        "MinSell": {
+          "type": "string"
+        },
+        "MaxSell": {
+          "type": "string"
+        },
+        "MinBuy": {
+          "type": "string"
+        },
+        "MaxBuy": {
+          "type": "string"
+        },
+        "Tick": {
+          "type": "string"
+        },
+        "Category": {
+          "type": "string"
+        },
+        "BasePrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "QuotePrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "DefaultQuoteValue": {
+          "type": "string"
+        },
+        "DefaultBaseValue": {
+          "type": "string"
+        },
+        "SellVisibility": {
+          "type": "boolean"
+        },
+        "BuyVisibility": {
+          "type": "boolean"
+        },
+        "RefSymbol": {
+          "type": "string"
+        }
+      }
+    },
+    "marketGetMarketChartsRequest": {
+      "type": "object",
+      "properties": {
+        "refSymbol": {
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/definitions/GetMarketChartsRequestPeriod"
+        }
+      },
+      "title": "GetMarketsCharts\n--------------------------------------------------------------------------------"
+    },
+    "marketGetMarketChartsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketGetMarketChartsResponseData"
+        }
+      }
+    },
+    "marketGetMarketChartsResponseData": {
+      "type": "object",
+      "properties": {
+        "Daily": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataKline"
+          }
+        },
+        "Weekly": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataKline"
+          }
+        },
+        "Monthly": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataKline"
+          }
+        },
+        "Yearly": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataKline"
+          }
+        }
+      }
+    },
+    "marketGetMarketRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      },
+      "title": "GetMarket\n--------------------------------------------------------------------------------"
+    },
+    "marketGetMarketResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketRabexMarket"
+        }
+      }
+    },
+    "marketGetMarketsPriceRequest": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "GetMarketsPrice\n--------------------------------------------------------------------------------"
+    },
+    "marketGetMarketsPriceResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetMarketsPriceResponsePrice"
+          }
+        }
+      }
+    },
+    "marketGetOtcMarketStatusResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketGetOtcMarketStatusResponseData"
+        }
+      },
+      "title": "GetOtcMarketStatus\n--------------------------------------------------------------------------------"
+    },
+    "marketGetOtcMarketStatusResponseData": {
+      "type": "object",
+      "properties": {
+        "otcBuyStatus": {
+          "type": "boolean"
+        },
+        "otcBuyDesc": {
+          "type": "string"
+        },
+        "otcSellStatus": {
+          "type": "boolean"
+        },
+        "otcSellDesc": {
+          "type": "string"
+        },
+        "usdtBuyPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "usdtSellPrice": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "marketGetSelector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "NameEn": {
+          "type": "string"
+        },
+        "NameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "SubSelector": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketGetSubSelector"
+          }
+        }
+      }
+    },
+    "marketGetSubSelector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameFa": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "selectorId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Market": {
+          "type": "string"
+        },
+        "MarketInfo": {
+          "$ref": "#/definitions/marketGetMarket"
+        }
+      }
+    },
+    "marketListMarketsRequest": {
+      "type": "object",
+      "properties": {
+        "marketName": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/apimarketMarketType"
+        },
+        "visibility": {
+          "$ref": "#/definitions/ListMarketsRequestVisibility"
+        },
+        "pagination": {
+          "$ref": "#/definitions/apimarketPagination"
+        },
+        "withCsv": {
+          "type": "boolean"
+        }
+      },
+      "title": "ListMarkets\n--------------------------------------------------------------------------------"
+    },
+    "marketListMarketsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketListMarketsResponseData"
+        }
+      }
+    },
+    "marketListMarketsResponseData": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "markets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketRabexMarket"
+          }
+        },
+        "csvName": {
+          "type": "string"
+        }
+      }
+    },
+    "marketMarketKline": {
+      "type": "object",
+      "properties": {
+        "eventTime": {
+          "type": "string"
+        },
+        "typeEvent": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "lastBinancePrice": {
+          "type": "string"
+        },
+        "priceChange": {
+          "type": "string"
+        },
+        "priceBuy": {
+          "type": "string"
+        },
+        "priceSell": {
+          "type": "string"
+        }
+      }
+    },
+    "marketMarketKlineStream": {
+      "type": "object",
+      "properties": {
+        "marketKline": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketKline"
+          }
+        }
+      }
+    },
+    "marketMarketPriceSanityRequest": {
+      "type": "object",
+      "properties": {
+        "marketPriceSanity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketPriceSanityRequestdata"
+          }
+        }
+      }
+    },
+    "marketMarketPriceSanityResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketPriceSanityResponseData"
+          }
+        }
+      }
+    },
+    "marketMarketPriceSanityResponseData": {
+      "type": "object",
+      "properties": {
+        "marketSymbol": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "lastUpdate": {
+          "type": "string"
+        },
+        "isAllowed": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "takerAssetPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "makerAssetPrecision": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "baseTmnPrice": {
+          "type": "string"
+        },
+        "priceMultiplier": {
+          "type": "number",
+          "format": "float"
+        },
+        "baseRefPrice": {
+          "type": "string"
+        },
+        "usdtPrice": {
+          "type": "string"
+        }
+      }
+    },
+    "marketMarketRefPrice": {
+      "type": "object",
+      "properties": {
+        "refMarket": {
+          "type": "string"
+        },
+        "refPrice": {
+          "type": "string"
+        }
+      }
+    },
+    "marketMarketRefPriceResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketRefPrice"
+          }
+        }
+      }
+    },
+    "marketMarketSelectors": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketSelectorsBase"
+          }
+        }
+      }
+    },
+    "marketMarketSelectorsBase": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketSelectorsQuote"
+          }
+        }
+      }
+    },
+    "marketMarketSelectorsGetResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketGetSelector"
+          }
+        }
+      }
+    },
+    "marketMarketSelectorsQuote": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "quoteName": {
+          "type": "string"
+        },
+        "baseId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "marketMarketSelectorsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketSelectorsResponseSelector"
+          }
+        }
+      }
+    },
+    "marketMarketSelectorsResponseSelector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "subselector": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketMarketSelectorsResponseSubSelector"
+          }
+        }
+      }
+    },
+    "marketMarketSelectorsResponseSubSelector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "selectorId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "marketRabexMarket": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "refSymbol": {
+          "type": "string"
+        },
+        "buyPrice": {
+          "type": "string"
+        },
+        "sellPrice": {
+          "type": "string"
+        },
+        "buyMl": {
+          "type": "string"
+        },
+        "buyMin": {
+          "type": "string"
+        },
+        "buyMax": {
+          "type": "string"
+        },
+        "sellMl": {
+          "type": "string"
+        },
+        "buyStatus": {
+          "type": "boolean"
+        },
+        "sellMin": {
+          "type": "string"
+        },
+        "sellStatus": {
+          "type": "boolean"
+        },
+        "sellMax": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/apimarketMarketType"
+        },
+        "tick": {
+          "type": "string"
+        },
+        "priceSource": {
+          "$ref": "#/definitions/apimarketPriceSource"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "buyDesc": {
+          "type": "string"
+        },
+        "sellDesc": {
+          "type": "string"
+        },
+        "refPrice": {
+          "type": "string"
+        },
+        "lastUpdate": {
+          "type": "string"
+        },
+        "quotePrecision": {
+          "type": "string"
+        },
+        "basePrecision": {
+          "type": "string"
+        },
+        "sellVisibility": {
+          "type": "boolean"
+        },
+        "buyVisibility": {
+          "type": "boolean"
+        },
+        "defaultQuoteValue": {
+          "type": "string"
+        },
+        "defaultBaseValue": {
+          "type": "string"
+        }
+      }
+    },
+    "marketTickerHealthCheckResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketTickerHealthCheckResponseData"
+          }
+        }
+      }
+    },
+    "marketTickerHealthCheckResponseData": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "health": {
+          "type": "boolean"
+        },
+        "changeDate": {
+          "type": "string"
+        }
+      }
+    },
+    "marketUpdateBaseSelectorRequest": {
+      "type": "object",
+      "properties": {
+        "bases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketUpdateBaseSelectorRequestBase"
+          }
+        }
+      }
+    },
+    "marketUpdateBaseSelectorRequestBase": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "marketUpdateMarketRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "price": {
+          "type": "string"
+        },
+        "buyMl": {
+          "type": "string"
+        },
+        "buyMin": {
+          "type": "string"
+        },
+        "buyMax": {
+          "type": "string"
+        },
+        "sellMl": {
+          "type": "string"
+        },
+        "priceSource": {
+          "$ref": "#/definitions/apimarketPriceSource"
+        },
+        "buyStatus": {
+          "type": "boolean"
+        },
+        "sellMin": {
+          "type": "string"
+        },
+        "sellStatus": {
+          "type": "boolean"
+        },
+        "sellMax": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/apimarketMarketType"
+        },
+        "tick": {
+          "type": "string"
+        },
+        "buyDesc": {
+          "type": "string"
+        },
+        "sellDesc": {
+          "type": "string"
+        },
+        "quotePrecision": {
+          "type": "string"
+        },
+        "basePrecision": {
+          "type": "string"
+        },
+        "sellVisibility": {
+          "type": "boolean"
+        },
+        "buyVisibility": {
+          "type": "boolean"
+        },
+        "defaultQuoteValue": {
+          "type": "string"
+        },
+        "defaultBaseValue": {
+          "type": "string"
+        },
+        "refSymbol": {
+          "type": "string"
+        }
+      },
+      "title": "updateMarket\n--------------------------------------------------------------------------------"
+    },
+    "marketUpdateMarketResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketRabexMarket"
+        }
+      }
+    },
+    "marketUpdateOtcMarketStatusRequest": {
+      "type": "object",
+      "properties": {
+        "otcSellDesc": {
+          "type": "string"
+        },
+        "otcBuyStatus": {
+          "type": "boolean"
+        },
+        "otcBuyDesc": {
+          "type": "string"
+        },
+        "otcSellStatus": {
+          "type": "boolean"
+        },
+        "usdtBuyPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "usdtSellPrice": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "title": "UpdateOtcMarketStatus\n--------------------------------------------------------------------------------"
+    },
+    "marketUpdateOtcMarketStatusResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/marketUpdateOtcMarketStatusResponseData"
+        }
+      }
+    },
+    "marketUpdateOtcMarketStatusResponseData": {
+      "type": "object",
+      "properties": {
+        "otcSellDesc": {
+          "type": "string"
+        },
+        "otcBuyStatus": {
+          "type": "boolean"
+        },
+        "otcBuyDesc": {
+          "type": "string"
+        },
+        "otcSellStatus": {
+          "type": "boolean"
+        },
+        "usdtBuyPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "usdtSellPrice": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "marketUpdateQuoteSelectorRequest": {
+      "type": "object",
+      "properties": {
+        "quotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketUpdateQuoteSelectorRequestQuote"
+          }
+        }
+      }
+    },
+    "marketUpdateQuoteSelectorRequestQuote": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "marketUpdateSelectorRequest": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketUpdateSelectorRequestSelector"
+          }
+        }
+      }
+    },
+    "marketUpdateSelectorRequestSelector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "marketUpdateSubSelectorRequest": {
+      "type": "object",
+      "properties": {
+        "subSelector": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/marketUpdateSubSelectorRequestSubSelector"
+          }
+        }
+      }
+    },
+    "marketUpdateSubSelectorRequestSubSelector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    }
+  }
+}

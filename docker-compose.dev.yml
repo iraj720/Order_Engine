@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  order-engine:
+    image: git.rabex.co:5055/backend/order-engine:latest
+    container_name: order-engine
+    environment:
+      GRPC_HOST: 0.0.0.0
+      GRPC_PORT: 50051
+      HTTP_HOST: 0.0.0.0
+      HTTP_PORT: 8080
+    ports:
+      - 56055:50051
+    networks:
+      - backend
+      
+    restart: unless-stopped
+    labels:
+      - "traefik.docker.network=proxy"
+      - "traefik.enable=true"
+      - "traefik.backend=order-engine"
+      - "traefik.http.services.order-engine.loadbalancer.server.port=8080"
+      - "traefik.http.routers.order-engine.rule=PathPrefix(`/api/v1/order-engine/`)"
+
+
+networks:
+  backend:
+    driver: bridge
+    name: backend
+    external: true
+  
+
+#
